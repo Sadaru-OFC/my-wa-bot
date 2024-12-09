@@ -102,8 +102,6 @@ let msg = `*_INFINITY WA BOT Cinesubz.co DOWNLOADER 📥_*
 
 ⭐ *IMDB Rate :* ${info.data.rating}
 
-🖇️ *Link* : ${array[index-1].link}
-
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
 🔢 Reply Below Number :
@@ -229,8 +227,6 @@ let msg = `*_INFINITY WA BOT Cinesubz.co DOWNLOADER 📥_*
 ⏱ *Duration :* ${info.data.duration}
 
 ⭐ *IMDB Rate :* ${info.data.rating}
-
-🖇️ *Link* : ${searchResult[0].link}
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
@@ -405,8 +401,6 @@ let msg = `*_INFINITY WA BOT Cinesubz.co SENDER 📥_*
 
 *IMDB Rate :* ${info.data.rating}
 
-*Link* : ${array[index-1].link}
-
 🔢 Reply Below Number :
 
 0 || Send movie info
@@ -458,8 +452,6 @@ let sendInfomsg = `🍟 *${info.data.title}*
 ⏱ *Duration :* ${info.data.duration}
 
 ⭐ *IMDB Rate :* ${info.data.rating}
-
-🖇️ *Link* : ${array[index-1].link}
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
