@@ -30,7 +30,7 @@ const director = $('#cast > div:nth-child(2) > div > div.data > div.name > a').t
 const images = $('img')
         images.each((index, element) => {
             const imageUrl = $(element).attr('src')
-
+        })
 let msg = `🍟 ${title}
 
 🧿 *Release Date :* ${date}
