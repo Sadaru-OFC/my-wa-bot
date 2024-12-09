@@ -4,7 +4,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 cmd({
-    pattern: "test",
+    pattern: "data",
     desc: "AI chat feature",
     category: "owner",
     filename: __filename
@@ -14,18 +14,27 @@ try{
 
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
+if(!isOwner) return reply("*_This is an owner cmd._*")
 
-axios.get('https://cinesubz.co/movies/amaran-2024-sinhala-subtitles/')
+axios.get('${q}')
   .then(response => {
     const $ = cheerio.load(response.data);
     const title = $('#single > div.content.right > div.sheader > div.data > h1').text();
-    console.log(title);
+    const desc = $('#info > div:nth-child(2) > span').text();
+    const url = $('#link-94773 > td:nth-child(1) > a').text();
   })
   .catch(error => {
     console.log(error);
   });
 
+let msg `${title}
 
+${desc}
+
+${url}`
+
+reply(msg)
+    
 }catch(e){
 console.log(e)
 reply(`${e}`)
