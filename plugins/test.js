@@ -27,7 +27,7 @@ axios.get('${q}')
     console.log(error);
   });
 
-let msg `${title}
+let msg = `${title}
 
 ${desc}
 
