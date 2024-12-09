@@ -29,7 +29,8 @@ const img = $('body > div:nth-child(19) > div.row > div.col-sm-12.col-md-9.col-l
 let msg = `*${title}*
 
 ${date}
-${desc}> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+${desc}
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
 await conn.sendMessage(from, {text:msg},{quoted:mek})
 
