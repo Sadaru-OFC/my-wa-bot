@@ -93,8 +93,6 @@ let infoMsg = `*_INFINITY WA BOT Sinhalasub.lk SENDER 📥_*
 
 *IMDB Rate :* ${info.result.data.imdbRate}
 
-*Link* : ${array[index-1].link}
-
 🔢 Reply Below Number :
 
 0 || Send movie info
@@ -149,8 +147,6 @@ let sendInfomsg = `🍟 *${info.result.data.title}*
 ⭐ *IMDB Rate :* ${info.result.data.imdbRate}
 
 🤵‍♂ *Director* : ${info.result.data.director}
-
-🖇️ *Link* : ${array[index-1].link}
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
