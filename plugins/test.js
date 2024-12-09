@@ -16,10 +16,10 @@ const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return
 
-const response = await axios.get('https://translate.google.com/?sl=en&tl=si&text=tree&op=translate')
+const response = await axios.get('https://translate.google.com/?sl=auto&tl=si&text=dog&op=translate')
 const $ = cheerio.load(response.data)
 
-const title = $('#yDmH0d > c-wiz > div > div.ToWKne > c-wiz > div.OlSOob > c-wiz > div.ccvoYb > div.AxqVh > div.OPPzxe > c-wiz > div > div.usGWQd > div > div.lRu31 > span.HwtZe > span > span').text()
+const title = $('#yDmH0d > c-wiz > div > div.ToWKne > c-wiz > div.OlSOob > c-wiz > div.ccvoYb > div.AxqVh > div.OPPzxe > c-wiz > div > div.usGWQd > div > div.lRu31 > span.HwtZe').text()
 
 console.log(title)
     
