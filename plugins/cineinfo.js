@@ -16,11 +16,16 @@ const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
 
-const response = axios.get('https://cinesubz.co/movies/time-cut-2024-sinhala-subtitles/')
-  
-    const $ = cheerio.load(response.data)
-    const title = $('#single > div.content.right > div.sheader > div.data > h1').text()
-    console.log(title)
+axios.get('https://cinesubz.co/movies/time-cut-2024-sinhala-subtitles/')
+  .then(response => {
+    const $ = cheerio.load(response.data);
+    const title = $('title').text();
+    console.log(title);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
  
 }catch(e){
 console.log(e)
