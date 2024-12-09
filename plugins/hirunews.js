@@ -19,7 +19,6 @@ let response = await axios.get('https://www.hirunews.lk/')
 let $ = cheerio.load(response.data)
 let url = $('#article-phara > p > a').attr('href')
 let result = await axios.get(`${url}`)
-let $ = cheerio.load(result.data)
 
 const title = $('body > div:nth-child(17) > center > h1').text()
 const date = $('body > div:nth-child(17) > center > p').text()
