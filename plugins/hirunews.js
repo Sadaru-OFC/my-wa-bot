@@ -18,7 +18,7 @@ if(config.BLOCK_JID.includes(from)) return
 const response = await axios.get('https://www.hirunews.lk/')
 const $ = cheerio.load(response.data)
 
-const title = $('body > div:nth-child(18) > div.row > div.col-sm-12.col-md-12.col-lg-6.section.order-lg-2.order-md-1.order-sm-1.order-1 > div > div.today-video > div.main-article-topic').text()
+const title = $('body > div:nth-child(20) > div.row > div.col-sm-12.col-md-12.col-lg-6.section.order-lg-2.order-md-1.order-sm-1.order-1 > div > div.today-video > div.main-article-topic > a').text()
 const date = $('body > div:nth-child(18) > div.row > div.col-sm-12.col-md-12.col-lg-6.section.order-lg-2.order-md-1.order-sm-1.order-1 > div > div.today-video > div.ex-vd-tittle-time').text()
 const cnt = $('#article-phara > p').text()
 
