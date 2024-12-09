@@ -4,9 +4,9 @@ const axios = require('axios')
 const cheerio = require('cheerio')
 
 cmd({
-    pattern: "hirunews",
-    desc: "Get hiru news",
-    category: "other",
+    pattern: "test",
+    desc: "test",
+    category: "owner",
     filename: __filename
 },
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
@@ -14,11 +14,12 @@ try{
 
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
+if(!isOwner) return
 
-const response = await axios.get('https://www.hirunews.lk/')
+const response = await axios.get('https://translate.google.com/?sl=en&tl=si&text=tree&op=translate')
 const $ = cheerio.load(response.data)
 
-const title = $('body > div:nth-child(20) > div.row > div.col-sm-12.col-md-12.col-lg-6.section.order-lg-2.order-md-1.order-sm-1.order-1 > div > div.today-video').text()
+const title = $('#yDmH0d > c-wiz > div > div.ToWKne > c-wiz > div.OlSOob > c-wiz > div.ccvoYb > div.AxqVh > div.OPPzxe > c-wiz > div > div.usGWQd > div > div.lRu31 > span.HwtZe > span > span').text()
 
 console.log(title)
     
