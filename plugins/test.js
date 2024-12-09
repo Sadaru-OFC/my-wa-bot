@@ -22,10 +22,20 @@ axios.get('https://cinesubz.co/movies/amaran-2024-sinhala-subtitles/')
     const title = $('#single > div.content.right > div.sheader > div.data > h1').text();
     const desc = $('#info > div:nth-child(2) > span').text();
     const url = $('#link-94773 > td:nth-child(1) > a').text();
+    const img = $('#single > div.content.right > div.sheader > div.poster > img').text();
 
+let msg = `${title}
+
+${desc}
+
+${url}
+
+${img}`
+      reply(msg)
       console.log(title)
       console.log(desc)
       console.log(url)
+      console.log(img)
   })
   .catch(error => {
     console.log(error);
