@@ -15,31 +15,13 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
-if(!q) return reply("*_Please give me a cinesubz.co url._*")
 
-const response = axios.get(`${q}`)
-    
-const $ = cheerio.load(response.data)
-const title = $('#single > div.content.right > div.sheader > div.data > h1').text()
-const date = $('#single > div.content.right > div.sheader > div.data > div.extra > span.date').text()
-const cnt = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country').text()
-const dur = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime').text()
-const rate = $('#repimdb > strong').text()
-const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img src').text()
-    
-let msg = `🍟 ${title}
-
-🧿 Release Date : ${date}
-
-🌍 Country : ${cnt}
-
-⏱ Duration : ${dur}
-
-⭐ IMDB Rate : ${rate}`
-    
-await conn.sendMessage(from, {text : msg},{quoted:mek})
-    
-console.log(img)
+axios.get('https://cinesubz.co/movies/time-cut-2024-sinhala-subtitles/')
+  
+    const $ = cheerio.load(response.data)
+    const title = $('#single > div.content.right > div.sheader > div.data > h1').text()
+    console.log(title)
+ 
     
 }catch(e){
 console.log(e)
