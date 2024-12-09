@@ -49,14 +49,10 @@ let msg = `🍟 ${title}
 
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
-conn.sendMessage(from, {text:msg},{quoted:mek})
-
-console.log(img)
-        
-            
+await conn.sendMessage(from, {image:{url: img},caption:msg},{quoted:mek})
+       
 }catch(e){
 console.log(e)
 reply(`${e}`)
 }
 })
-
