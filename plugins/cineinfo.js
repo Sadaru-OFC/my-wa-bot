@@ -1,7 +1,7 @@
-const {readEnv} = require('../lib/database');
-const {cmd , commands} = require('../command');
-const axios = require('axios');
-const cheerio = require('cheerio');
+const {readEnv} = require('../lib/database')
+const {cmd , commands} = require('../command')
+const axios = require('axios')
+const cheerio = require('cheerio')
 
 cmd({
     pattern: "cineinfo",
@@ -12,20 +12,20 @@ cmd({
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 
-const config = await readEnv();
-if(config.BLOCK_JID.includes(from)) return;
-if(!isOwner) return reply("*_This is an owner cmd._*");
-if(!q) return reply("*_Please give me a cinesubz.co url._*");
+const config = await readEnv()
+if(config.BLOCK_JID.includes(from)) return
+if(!isOwner) return reply("*_This is an owner cmd._*")
+if(!q) return reply("*_Please give me a cinesubz.co url._*")
 
-const response = await axios.get(`${q}`);
-const $ = cheerio.load(response.data);
+const response = axios.get(`${q}`)
+const $ = cheerio.load(response.data)
 
-const title = $('#single > div.content.right > div.sheader > div.data > h1');
-const date = $('#single > div.content.right > div.sheader > div.data > div.extra > span.date');
-const cnt = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country');
-const dur = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime');
-const rate = $('#repimdb > strong');
-const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img src');
+const title = $('#single > div.content.right > div.sheader > div.data > h1')
+const date = $('#single > div.content.right > div.sheader > div.data > div.extra > span.date')
+const cnt = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country')
+const dur = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime')
+const rate = $('#repimdb > strong')
+const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img src')
 
 let msg = `🍟 ${title}
 
@@ -37,9 +37,9 @@ let msg = `🍟 ${title}
 
 ⭐ IMDB Rate : ${rate}`    
         
-await conn.sendMessage(from, {text : msg } , {quoted : mek} );
+await conn.sendMessage(from, {text : msg } , {quoted : mek} )
 
-console.log(img);
+console.log(img)
     
 }catch(e){
 console.log(e)
