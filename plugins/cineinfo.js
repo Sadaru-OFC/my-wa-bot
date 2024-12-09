@@ -25,7 +25,7 @@ const date = $('#single > div.content.right > div.sheader > div.data > div.extra
 const cnt = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country').text()
 const dur = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime').text()
 const rate = $('#repimdb > strong').text()
-const img = $('#directandtgdownload > div > div > table > tbody').text()
+const img = $('#directandtgdownload > div').text()
 
 let msg = `🍟 ${title}
 
