@@ -15,12 +15,26 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-const response = await axios.get('https://www.hirunews.lk/')
-const $ = cheerio.load(response.data)
+let response = await axios.get('https://www.hirunews.lk/')
+let $ = cheerio.load(response.data)
+let url = $('#article-phara > p > a').attr('href')
+let result = await axios.get(`${url}`)
+let $ = cheerio.load(result.data)
 
-const url = $('#article-phara > p > a').attr('href')
+const title = $('body > div:nth-child(17) > center > h1').text()
+const date = $('body > div:nth-child(17) > center > p').text()
+const desc = $('#article-phara2').text()
+const img = $('body > div:nth-child(17) > div.row > div.col-sm-12.col-md-9.col-lg-9.section > div.main-article-section > div.main-article-banner > img').attr('src')
 
-console.log(url)
+let msg = `*${title}*
+
+${date}
+
+${desc}
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+await conn.sendMessage(from, {image:{url: img},caption:msg},{quoted:mek})
     
 }catch(e){
 console.log(e)
