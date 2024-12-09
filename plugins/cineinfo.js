@@ -17,15 +17,15 @@ if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
 if(!q) return reply("*_Please give me a cinesubz.co url._*")
 
-const response = axios.get(`${q}`)
+const response = await axios.get(`${q}`)
 const $ = cheerio.load(response.data)
 
-const title = $('#single > div.content.right > div.sheader > div.data > h1')
-const date = $('#single > div.content.right > div.sheader > div.data > div.extra > span.date')
-const cnt = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country')
-const dur = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime')
-const rate = $('#repimdb > strong')
-const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img src')
+const title = $('#single > div.content.right > div.sheader > div.data > h1').text()
+const date = $('#single > div.content.right > div.sheader > div.data > div.extra > span.date').text()
+const cnt = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country').text()
+const dur = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime').text()
+const rate = $('#repimdb > strong').text()
+const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img src').text()
 
 let msg = `🍟 ${title}
 
