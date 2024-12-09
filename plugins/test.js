@@ -16,26 +16,33 @@ const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
 
-axios.get('https://cinesubz.co/movies/amaran-2024-sinhala-subtitles/')
+axios.get(`${q}`)
   .then(response => {
-    const $ = cheerio.load(response.data);
-    const title = $('#single > div.content.right > div.sheader > div.data > h1').text();
-    const desc = $('#info > div:nth-child(2) > span').text();
-    const url = $('#link-94773 > td:nth-child(1) > a').text();
-    const img = $('#single > div.content.right > div.sheader > div.poster > img').text();
-
+    const $ = cheerio.load(response.data)
+    const title = $('#single > div.content.right > div.sheader > div.data > h1').text()
+    const desc = $('#info > div:nth-child(2) > span').text()
+    const date = $('#single > div.content.right > div.sheader > div.data > div.extra > span.date').text()
+    const cnt = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country').text()
+    const dur = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime').text()
+    const cat = $('#single > div.content.right > div.sheader > div.data > div.sgeneros').text()
 let msg = `${title}
 
-${desc}
+${date}
 
-${url}
+${cnt}
 
-${img}`
+${dur}
+
+${cat}
+
+${desc}`
       reply(msg)
       console.log(title)
-      console.log(desc)
-      console.log(url)
-      console.log(img)
+      console.log(date)
+      console.log(cnt)
+      console.log(dur)
+      console.log(cat)
+      console.log(dasc)
   })
   .catch(error => {
     console.log(error);
