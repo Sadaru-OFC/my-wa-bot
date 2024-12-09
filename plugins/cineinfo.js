@@ -51,7 +51,7 @@ let msg = `🍟 ${title}
 
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
-await conn.sendMessage(from, {text:msg},{quoted:mek})
+conn.sendMessage(from, {text:msg},{quoted:mek})
 
 console.log(imageUrl)
             
