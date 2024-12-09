@@ -1,6 +1,5 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
-const { fetchJson } = require('../lib/functions')
 const axios = require('axios');
 const cheerio = require('cheerio');
 
