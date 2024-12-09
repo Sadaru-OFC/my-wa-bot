@@ -26,6 +26,7 @@ const date = $('#single > div.content.right > div.sheader > div.data > div.extra
 const cnt = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country').text()
 const dur = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime').text()
 const rate = $('#repimdb > strong').text()
+const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img src').text()
     
 let msg = `🍟 ${title}
 
@@ -38,8 +39,6 @@ let msg = `🍟 ${title}
 ⭐ IMDB Rate : ${rate}`
     
 await conn.sendMessage(from, {text : msg},{quoted:mek})
-
-const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img src').text()
     
 console.log(img)
     
