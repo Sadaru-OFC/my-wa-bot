@@ -28,7 +28,6 @@ const time = $('#single > div.content.right > div.sheader > div.data > div.extra
 const rate = $('#repimdb > strong').text()
 const director = $('#cast > div:nth-child(2) > div > div.data > div.name > a').text()
 const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img').attr('src')
-const dlUrl = $('#link-94803 > td:nth-child(1) > a').attr('src')
 
 let msg = `🍟 *${title}*
 
@@ -51,8 +50,6 @@ let msg = `🍟 *${title}*
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
 await conn.sendMessage(from, {image:{url: img},caption:msg},{quoted:mek})
-
-console.log(dlUrl)
     
 }catch(e){
 console.log(e)
