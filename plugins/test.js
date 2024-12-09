@@ -19,7 +19,7 @@ if(config.BLOCK_JID.includes(from)) return
 axios.get('https://cinesubz.co/movies/amaran-2024-sinhala-subtitles/')
   .then(response => {
     const $ = cheerio.load(response.data);
-    const title = $('#single > div.content.right > div.sheader > div.poster > img').text();
+    const title = $('single > div.content.right > div.sheader > div.data > h1').text();
     console.log(title);
   })
   .catch(error => {
