@@ -18,9 +18,8 @@ if(!isOwner) return reply("*_This is an owner cmd._*")
 if(!q) return reply("*_Please give me a cinesubz.co url._*")
 
 const response = axios.get(`${q}`)
-
-const $ = cheerio.load(response.data)
     
+const $ = cheerio.load(response.data)
 const title = $('#single > div.content.right > div.sheader > div.data > h1').text()
 const date = $('#single > div.content.right > div.sheader > div.data > div.extra > span.date').text()
 const cnt = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country').text()
