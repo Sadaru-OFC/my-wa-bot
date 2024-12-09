@@ -34,7 +34,7 @@ ${desc}
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from, {image:{url: img},caption:msg},{quoted:mek})
+await conn.sendMessage(from, {text:msg},{quoted:mek})
     
 }catch(e){
 console.log(e)
