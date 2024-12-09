@@ -16,10 +16,10 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-axios.get('https://rest-api-dark-shan.vercel.app/')
+axios.get('https://cinesubz.co/')
   .then(response => {
     const $ = cheerio.load(response.data);
-    const title = $('title').text();
+    const title = $('body').text();
     console.log(title);
   })
   .catch(error => {
