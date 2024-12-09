@@ -27,6 +27,7 @@ const country = $('#single > div.content.right > div.sheader > div.data > div.ex
 const time = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime').text()
 const rate = $('#repimdb > strong').text()
 const director = $('#cast > div:nth-child(2) > div > div.data > div.name > a').text()
+const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img').attr('src')
 
 let msg = `🍟 ${title}
 
@@ -50,11 +51,8 @@ let msg = `🍟 ${title}
 
 conn.sendMessage(from, {text:msg},{quoted:mek})
 
-const images = $('img')
-        images.each((index, element) => {
-            const imageUrl = $(element).attr('src')
-            console.log(imageUrl)
-        })
+console.log(img)
+        
             
 }catch(e){
 console.log(e)
