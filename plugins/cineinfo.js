@@ -16,6 +16,7 @@ const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
 if(!q && !q.startsWith('https://cinesubz.co/')) return reply("*_Please give me a cinesubz.co url._*")
+let code = await conn.groupInviteCode('120363355439809658@g.us')
 
 const response = await axios.get(`${q}`)
 const $ = cheerio.load(response.data)
@@ -44,9 +45,11 @@ let msg = `🍟 ${title}
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-● ɢʀᴏᴜᴘ ʟɪɴᴋ : https://chat.whatsapp.com/FsGnAzENBYUBioD71bOFsN
+● ɢʀᴏᴜᴘ ʟɪɴᴋ : https://chat.whatsapp.com/${code}
 
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
+
+await conn.sendMessage(from, {text:msg},{quoted:mek})
     
 }catch(e){
 console.log(e)
