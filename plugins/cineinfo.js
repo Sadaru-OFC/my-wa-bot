@@ -20,6 +20,13 @@ let code = await conn.groupInviteCode('120363355439809658@g.us')
 
 let response = await axios.get(`https://cinesubz.co/?s=${q}`);
 let $ = cheerio.load(response.data);
+
+const images = $('#contenedor > div.module > div.content.rigth.csearch > div > div:nth-child(2) > article > div.details > div.title > a'); // Select all image elements
+        images.each((index, element) => {
+            const imageUrl = $(element).attr('src'); // Get the source attribute of each image
+            console.log(imageUrl);
+        });
+    
 let url = $('#contenedor > div.module > div.content.rigth.csearch > div > div:nth-child(2) > article > div.details > div.title > a').attr('href');
 let result = await axios.get(`${url}`);
 $ = cheerio.load(result.data)
