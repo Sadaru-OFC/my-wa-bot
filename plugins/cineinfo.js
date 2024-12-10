@@ -18,8 +18,11 @@ if(!isOwner) return reply("*_This is an owner cmd._*")
 if(!q && !q.startsWith('https://cinesubz.co/')) return reply("*_Please give me a cinesubz.co url._*")
 let code = await conn.groupInviteCode('120363355439809658@g.us')
 
-const response = await axios.get(`${q}`)
-const $ = cheerio.load(response.data)
+let response = await axios.get(`https://cinesubz.co/?s=${q}`);
+let $ = cheerio.load(response.data);
+let url = $('#contenedor > div.module > div.content.rigth.csearch > div > div:nth-child(2) > article > div.details > div.title > a').attr('href');
+let result = await axios.get(`${url}`);
+$ = cheerio.load(result.data)
 
 const title = $('#single > div.content.right > div.sheader > div.data > h1').text()
 const date = $('#single > div.content.right > div.sheader > div.data > div.extra > span.date').text()
