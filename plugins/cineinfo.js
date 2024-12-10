@@ -20,13 +20,6 @@ let code = await conn.groupInviteCode('120363355439809658@g.us')
 
 let response = await axios.get(`https://cinesubz.co/?s=${q}`);
 let $ = cheerio.load(response.data);
-
-const images = $('#contenedor > div.module > div.content.rigth.csearch > div > div:nth-child(2) > article > div.details > div.title > a'); // Select all image elements
-        images.each((index, element) => {
-            const imageUrl = $(element).attr('src'); // Get the source attribute of each image
-            console.log(imageUrl);
-        });
-    
 let url = $('#contenedor > div.module > div.content.rigth.csearch > div > div:nth-child(2) > article > div.details > div.title > a').attr('href');
 let result = await axios.get(`${url}`);
 $ = cheerio.load(result.data)
@@ -51,8 +44,6 @@ let msg = `🍟 *${title}*
 
 🤵‍♂ *Director :* ${director}
 
-🖇 *Link :* ${url}
-
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
 ● ɢʀᴏᴜᴘ ʟɪɴᴋ : https://chat.whatsapp.com/${code}
@@ -60,6 +51,70 @@ let msg = `🍟 *${title}*
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
 await conn.sendMessage(from, {image:{url: img},caption:msg},{quoted:mek})
+    
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
+
+cmd({
+    pattern: "cineinfosend",
+    desc: "cinesubz.co info",
+    category: "owner",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+const config = await readEnv()
+if(config.BLOCK_JID.includes(from)) return
+const id = config.MV_SEND_JID
+if(!isOwner) return reply("*_This is an owner cmd._*")
+if(!q && !q.startsWith('https://cinesubz.co/')) return reply("*_Please give me a cinesubz.co url._*")
+let code = await conn.groupInviteCode('120363355439809658@g.us')
+
+const a = q.split(" & ")
+const b = a[0]
+const c = a[1]
+    
+let response = await axios.get(`https://cinesubz.co/?s=${b}`);
+let $ = cheerio.load(response.data);
+let url = $('#contenedor > div.module > div.content.rigth.csearch > div > div:nth-child(2) > article > div.details > div.title > a').attr('href');
+let result = await axios.get(`${url}`);
+$ = cheerio.load(result.data)
+
+const title = $('#single > div.content.right > div.sheader > div.data > h1').text()
+const date = $('#single > div.content.right > div.sheader > div.data > div.extra > span.date').text()
+const country = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country').text()
+const time = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime').text()
+const rate = $('#repimdb > strong').text()
+const director = $('#cast > div:nth-child(2) > div > div.data > div.name > a').text()
+const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img').attr('src')
+
+let msg = `🍟 *${title}*
+
+🧿 *Release Date :* ${date}
+
+🌍 *Country :* ${country}
+
+⏱ *Duration :* ${time}
+
+⭐ *IMDB Rate :* ${rate}
+
+🤵‍♂ *Director :* ${director}
+
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+
+● ɢʀᴏᴜᴘ ʟɪɴᴋ : https://chat.whatsapp.com/${code}
+
+> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
+
+if(!c) {
+await conn.sendMessage(id, {image:{url: img},caption:msg},{quoted:mek})
+} else {
+await conn.sendMessage(c, {image:{url: img},caption:msg},{quoted:mek})
+}
     
 }catch(e){
 console.log(e)
