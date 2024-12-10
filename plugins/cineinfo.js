@@ -73,12 +73,8 @@ const id = config.MV_SEND_JID
 if(!isOwner) return reply("*_This is an owner cmd._*")
 if(!q && !q.startsWith('https://cinesubz.co/')) return reply("*_Please give me a cinesubz.co url._*")
 let code = await conn.groupInviteCode('120363355439809658@g.us')
-
-const a = q.split(" & ")
-const b = a[0]
-const c = a[1]
     
-let response = await axios.get(`https://cinesubz.co/?s=${b}`);
+let response = await axios.get(`https://cinesubz.co/?s=${q}`);
 let $ = cheerio.load(response.data);
 let url = $('#contenedor > div.module > div.content.rigth.csearch > div > div:nth-child(2) > article > div.details > div.title > a').attr('href');
 let result = await axios.get(`${url}`);
@@ -110,12 +106,8 @@ let msg = `🍟 *${title}*
 
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
-if(!c) {
 await conn.sendMessage(id, {image:{url: img},caption:msg})
-} else {
-await conn.sendMessage(c, {image:{url: img},caption:msg})
-}
-    
+
 }catch(e){
 console.log(e)
 reply(`${e}`)
