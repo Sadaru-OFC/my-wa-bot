@@ -19,6 +19,11 @@ if(!q) return reply("*_Please give me a movie name._*")
 let response = await axios.get(`https://cinesubz.co/?s=${q}`);
 let $ = cheerio.load(response.data);
 let url = $('#contenedor > div.module > div.content.rigth.csearch > div > div:nth-child(2) > article > div.details > div.title > a').attr('href');
+    if(!url) {
+        let errr = $('#contenedor > div.module > div.content.rigth.csearch > div > div.no-result.animation-2 > h2 > span').text()
+        console.log(errr)
+        return reply(errr)
+    }
 let result = await axios.get(`${url}`);
 $ = cheerio.load(result.data)
 
