@@ -35,7 +35,6 @@
     "translatte": "3.0.1",
     "anime-character-random": "1.0.14",
     "figlet": "1.8.0",
-    "mime-types": "2.1.35",
-    "xmlhttprequest": "1.8.0"
+    "mime-types": "2.1.35"
   }
 }
