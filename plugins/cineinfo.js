@@ -44,7 +44,7 @@ let msg = `🍟 *${title}*
 
 🤵‍♂ *Director :* ${director}
 
-🖇 *Link :* ${q}
+🖇 *Link :* ${url}
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
