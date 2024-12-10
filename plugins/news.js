@@ -15,15 +15,12 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-let response = await axios.get('https://www.ada.lk/')
+let response = await axios.get('https://wabetainfo.com/')
 let $ = cheerio.load(response.data)
-let url = $('#breakingnewsads > div:nth-child(1) > a').attr('href')
-let result = await axios.get(`${url}`)
-$ = cheerio.load(result.data)
 
-const title = $('#main > div > div.row.mainrow.ng-scope > div.inner-special.col-lg-8.col-md-12.col-12.col-sm-12.ng-scope > div > div > div.single-left-grid > h1').text()
+const time = $('#post-35963 > div > div.entry-metas.mb-half-gutter.last\:mb-0 > span.meta-item.posted-on > span > time').text()
 
-console.log(title)
+console.log(time)
     
 }catch(e){
 console.log(e)
