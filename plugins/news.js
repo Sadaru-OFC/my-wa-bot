@@ -15,7 +15,7 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-let response = await axios.get('https://wabetainfo.com/android/')
+let response = axios.get('https://wabetainfo.com/android/')
 let $ = cheerio.load(response.data)
 
 const time = $('#post-35897 > div > div.entry-metas.mb-half-gutter.last\:mb-0 > span.meta-item.posted-on > span > time').text()
