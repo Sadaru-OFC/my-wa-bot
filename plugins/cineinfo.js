@@ -44,6 +44,8 @@ let msg = `🍟 *${title}*
 
 🤵‍♂ *Director :* ${director}
 
+🖇 *Link :* {url}
+
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
 ● ɢʀᴏᴜᴘ ʟɪɴᴋ : https://chat.whatsapp.com/${code}
@@ -103,6 +105,8 @@ let msg = `🍟 *${title}*
 ⭐ *IMDB Rate :* ${rate}
 
 🤵‍♂ *Director :* ${director}
+
+🖇 *Link :* ${url}
 
 ▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
