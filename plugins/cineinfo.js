@@ -29,6 +29,7 @@ const time = $('#single > div.content.right > div.sheader > div.data > div.extra
 const rate = $('#repimdb > strong').text()
 const director = $('#cast > div:nth-child(2) > div > div.data > div.name > a').text()
 const img = $('#single > div.content.right > div.sheader > div.poster > img').attr('src')
+const errr = $('#contenedor > div.module > div.content.rigth.csearch > div > div.no-result.animation-2 > h2 > span').text()
 
 let msg = `🍟 *${title}*
 
@@ -50,7 +51,7 @@ await conn.sendMessage(from, {image:{url: img},caption:msg},{quoted:mek})
     
 }catch(e){
 console.log(e)
-reply(`${e}`)
+reply(`${errr}`)
 }
 })
 
@@ -87,7 +88,8 @@ const time = $('#single > div.content.right > div.sheader > div.data > div.extra
 const rate = $('#repimdb > strong').text()
 const director = $('#cast > div:nth-child(2) > div > div.data > div.name > a').text()
 const img = $('#single > div.content.right > div.sheader > div.poster > img').attr('src')
-
+const errr = $('#contenedor > div.module > div.content.rigth.csearch > div > div.no-result.animation-2 > h2 > span').text()
+    
 let msg = `🍟 *${title}*
 
 🧿 *Release Date :* ${date}
@@ -116,6 +118,6 @@ await conn.sendMessage(c, {image:{url: img},caption:msg})
     
 }catch(e){
 console.log(e)
-reply(`${e}`)
+reply(`${errr}`)
 }
 })
