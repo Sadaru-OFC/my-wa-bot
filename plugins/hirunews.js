@@ -24,11 +24,16 @@ $ = cheerio.load(result.data);
 const title = $('body > div:nth-child(17) > center > h1').text()
 const date = $('body > div:nth-child(17) > center > p').text()
 const desc = $('#article-phara2').text()
-
+const images = $('img'); // Select all image elements
+        images.each((index, element) => {
+            const imageUrl = $(element).attr('src'); // Get the source attribute of each image
+            console.log(imageUrl);
+        });
 let msg = `*${title}*
 
 ${date}
 ${desc}
+
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
 await conn.sendMessage(from, {text:msg},{quoted:mek})
