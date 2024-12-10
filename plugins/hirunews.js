@@ -24,7 +24,6 @@ $ = cheerio.load(result.data);
 const title = $('body > div:nth-child(17) > center > h1').text()
 const date = $('body > div:nth-child(17) > center > p').text()
 const desc = $('#article-phara2').text()
-const img = $('body > div:nth-child(19) > div.row > div.col-sm-12.col-md-9.col-lg-9.section > div.main-article-section > div.main-article-banner > img').attr('data-src')
 
 let msg = `*${title}*
 
