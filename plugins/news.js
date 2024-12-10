@@ -18,6 +18,7 @@ if(config.BLOCK_JID.includes(from)) return
 let response = await axios.get('https://www.ada.lk/')
 let $ = cheerio.load(response.data)
 let url = $('#breakingnewsads > div:nth-child(1) > a').attr('href')
+    console.log(url)
 let result = await axios.get(`${url}`)
 $ = cheerio.load(result.data)
 
