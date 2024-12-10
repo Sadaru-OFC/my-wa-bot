@@ -6,7 +6,7 @@ const cheerio = require('cheerio')
 cmd({
     pattern: "cineinfo",
     desc: "cinesubz.co info",
-    category: "owner",
+    category: "search",
     filename: __filename
 },
 async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
@@ -14,9 +14,7 @@ try{
 
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
-if(!isOwner) return reply("*_This is an owner cmd._*")
-if(!q && !q.startsWith('https://cinesubz.co/')) return reply("*_Please give me a cinesubz.co url._*")
-let code = await conn.groupInviteCode('120363355439809658@g.us')
+if(!q) return reply("*_Please give me a movie name._*")
 
 let response = await axios.get(`https://cinesubz.co/?s=${q}`);
 let $ = cheerio.load(response.data);
@@ -44,13 +42,9 @@ let msg = `🍟 *${title}*
 
 🤵‍♂ *Director :* ${director}
 
-🖇 *Link :* {url}
+🖇 *Link :* ${url}
 
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-● ɢʀᴏᴜᴘ ʟɪɴᴋ : https://chat.whatsapp.com/${code}
-
-> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
 await conn.sendMessage(from, {image:{url: img},caption:msg},{quoted:mek})
     
