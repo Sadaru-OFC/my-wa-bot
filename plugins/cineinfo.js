@@ -30,7 +30,7 @@ const country = $('#single > div.content.right > div.sheader > div.data > div.ex
 const time = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime').text()
 const rate = $('#repimdb > strong').text()
 const director = $('#cast > div:nth-child(2) > div > div.data > div.name > a').text()
-const img = $('#info > div:nth-child(2) > span > p:nth-child(1) > img').attr('src')
+const img = $('#single > div.content.right > div.sheader > div.poster > img').attr('src')
 
 let msg = `🍟 *${title}*
 
