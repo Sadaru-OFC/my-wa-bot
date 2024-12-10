@@ -56,24 +56,18 @@ if(!isOwner) return reply("*_This is an owner cmd._*")
 
 const id = config.MV_SEND_JID
     
-    let a = q
-
+let a = q
+	
 let b = a.split(" & ")
 
 let c = b[0]
 let d = b[1]
 
-  if(!a) return reply(`*_Please give me a direct link & jid. Ex :- .dirdlsend <direct link> & <jid>_*`)
+if(!a) return reply(`*_Please give me a direct link & file name. Ex :- .dirsend <direct link> & <file name>_*`)
+if(!d) return reply("*_Please give me a file name._*")
 
-if(!d) {
+await conn.sendMessage( id ,{document: {url: c },mimetype:"video/mp4",fileName: d + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ"})
 
-await conn.sendMessage( id ,{document: {url: c },mimetype:"video/mp4",fileName: "🎬 INFINITY WA BOT 🎬" + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ"})
-
-} else {
-    
-await conn.sendMessage( d ,{document: {url: c },mimetype:"video/mp4",fileName: "🎬 INFINITY WA BOT 🎬" + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ"})
-  
-}
 }catch(e){
 console.log(e)
 reply(`${e}`)
@@ -92,56 +86,10 @@ const config = await readEnv();
 if(config.BLOCK_JID.includes(from)) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
     
-  if(!q) return reply(`*_Please give me a direct link._*`)
+if(!q) return reply(`*_Please give me a direct link._*`)
 
 await conn.sendMessage(from ,{document: {url: q },mimetype:"video/mp4",fileName: "🎬 INFINITY WA BOT 🎬" + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"})
   
-}catch(e){
-console.log(e)
-reply(`${e}`)
-}
-})
-
-cmd({
-    pattern: "sinsearch",
-    desc: "search movies in sinhalasub.lk",
-    category: "search",
-    filename: __filename
-},
-async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
-    try {
-
-const config = await readEnv();
-if(config.BLOCK_JID.includes(from)) return
-let premNb = await fetchJson(`https://github.com/Sadarulk/QueenMatheeDB/raw/refs/heads/main/database/premium.json`)
-	    
-	let premMsg = `★ You are not a premium user.
-
-★  Please contact owner and purchase the movie download feature.
-
-★ 1 month : Rs.300
-
-★ WhatsApp - https://wa.me/94701814946?text=Buy+movie+premium`
-	    
-	if(!premNb.includes(senderNumber)) return reply(premMsg)
-const mv = await fetchJson(`${apilink}/movie/sinhalasub/search?text=${q}`)
-
-let array = mv.result.data
-
-        if(array.length === 0) {
-return reply(`*_Can't find this movie !_*`);
-        }       
-
-let result = array.map((movie, index) => `${index + 1}. *Movie Name :* ${array[index].title}\n*Type :* ${array[index].type}\n*Year :* ${array[index].year}\n*Link :* ${array[index].link}`).join("\n\n");
-
-let msg = `*_INFINITY WA BOT Sinhalasub.lk SEARCH 🔎_*
-
-${result}
-
-> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
-            
-await conn.sendMessage(from, { text : msg }, {quoted: mek})
-
 }catch(e){
 console.log(e)
 reply(`${e}`)
