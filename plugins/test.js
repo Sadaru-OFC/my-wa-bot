@@ -1,6 +1,6 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const XMLHttpRequest = require("xmlhttprequest")
 
 cmd({
     pattern: "test",
@@ -24,8 +24,6 @@ xhr.onreadystatechange = function () {
     }
 }
 xhr.send();
-
-
 
 }catch(e){
 console.log(e)
