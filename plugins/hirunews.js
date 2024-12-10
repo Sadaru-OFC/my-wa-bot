@@ -24,6 +24,7 @@ $ = cheerio.load(result.data);
 const title = $('body > div:nth-child(17) > center > h1').text()
 const date = $('body > div:nth-child(17) > center > p').text()
 const desc = $('#article-phara2').text()
+const img = $("body > div  > div.row > div.col-sm-12.col-md-9.col-lg-9.section > div.main-article-section > div.main-article-banner > img").attr("src")
 
 let msg = `*${title}*
 
@@ -32,8 +33,7 @@ ${desc}
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-await conn.sendMessage(from, {text:msg},{quoted:mek})
-
+await conn.sendMessage(from, {image:{url:img},caption:msg},{quoted:mek})
     
 }catch(e){
 console.log(e)
