@@ -111,9 +111,9 @@ let msg = `🍟 *${title}*
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
 if(!c) {
-await conn.sendMessage(id, {image:{url: img},caption:msg},{quoted:mek})
+await conn.sendMessage(id, {image:{url: img},caption:msg})
 } else {
-await conn.sendMessage(c, {image:{url: img},caption:msg},{quoted:mek})
+await conn.sendMessage(c, {image:{url: img},caption:msg})
 }
     
 }catch(e){
