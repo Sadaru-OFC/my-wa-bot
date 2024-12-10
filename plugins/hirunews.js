@@ -33,7 +33,6 @@ ${desc}
 
 await conn.sendMessage(from, {text:msg},{quoted:mek})
 
-console.log(img)
     
 }catch(e){
 console.log(e)
