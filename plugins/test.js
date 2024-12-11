@@ -17,13 +17,11 @@ if(config.BLOCK_JID.includes(from)) return
 if(!q) return
 if(!isOwner) return
     
-let response = await axios.get(`${q}`)
+let response = await axios.get(`https://www.pornhub.com/`)
 let $ = cheerio.load(response.data)
+const url = $('#v459721591 > div > div.phimage > a').text()
 
-const title = $('title').text()
-
-reply(title)
-console.log(title)
+console.log(url)
     
 }catch(e){
 console.log(e)
