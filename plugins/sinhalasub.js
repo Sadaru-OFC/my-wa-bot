@@ -179,9 +179,9 @@ const msg3 = {
             }
 			
 if(!sendJid) {
-await conn.sendMessage(id, msg3, {quoted: mek})
+await conn.sendMessage(id, msg3)
 			} else {
-await conn.sendMessage(sendJid, msg3, {quoted: mek})
+await conn.sendMessage(sendJid, msg3)
 			}
 			
 }
