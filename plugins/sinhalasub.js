@@ -156,11 +156,13 @@ let sendInfomsg = `🍟 *${info.result.data.title}*
 
 const msg = {
             externalAdReply: { 
+		    		title: 'Infinity Movie World',
+		    		body:'Created by Sadaru',
 				mediaType: 1,
-				sourceUrl: `${array[index-1].link}` ,
-                		thumbnailUrl: `${info.result.data.images[0]}` ,
+				sourceUrl: 'https://chat.whatsapp.com/${code}',
+                		thumbnailUrl: `${info.result.data.images[0]}`,
 				renderLargerThumbnail: true,
-          			showAdAttribution: false
+          			showAdAttribution: true
 	    		}
           }
 
