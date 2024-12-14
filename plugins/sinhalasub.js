@@ -156,8 +156,8 @@ let sendInfomsg = `🍟 *${info.result.data.title}*
 
 const msg = {
             externalAdReply: { 
-				mediaType: 1,
-				sourceUrl: `https://chat.whatsapp.com/${code}` ,
+				mediaType: 2,
+		    		sourceUrl: `https://chat.whatsapp.com/${code}` ,
                 		thumbnailUrl: `${info.result.data.images[0]}` ,
 				renderLargerThumbnail: true,
           			showAdAttribution: true
