@@ -1,6 +1,6 @@
 
 <a href = "#">
-<img src = "https://github.com/Sadarulk/QueenMatheeDB/blob/main/botlogos/infinitybotlogo.png?raw=true">
+<img src = "https://github.com/SadarulkOfficial/INFINITY-DATABASE/blob/main/Bot%20Logos/infinitylogo.png?raw=true">
 </img>
 
 <p align="center">
