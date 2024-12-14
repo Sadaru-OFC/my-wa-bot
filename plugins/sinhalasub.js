@@ -160,7 +160,7 @@ const msg = {
 				sourceUrl: `${array[index-1].link}` ,
                 		thumbnailUrl: `${info.result.data.images[0]}` ,
 				renderLargerThumbnail: true,
-          			showAdAttribution: true
+          			showAdAttribution: false
 	    		}
           }
 
