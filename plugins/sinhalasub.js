@@ -154,10 +154,34 @@ let sendInfomsg = `🍟 *${info.result.data.title}*
 
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
+const msg = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY MOVIE WORLD",
+            serverMessageId: 1
+          };
+          const msg2 = {
+            mentionedJid: [m.sender],
+            forwardedNewsletterMessageInfo: msg,
+            externalAdReply: { 
+		    		title: 'INFINITY MOVIE WORLD',
+				body: '',
+				mediaType: 1,
+				sourceUrl: `https://chat.whatsapp.com/${code}` ,
+                		thumbnailUrl: `${info.result.data.images[0]}` ,
+				renderLargerThumbnail: true,
+          			showAdAttribution: true
+	    		}
+          }
+
+const msg3 = {
+              text: sendInfomsg,
+              contextInfo: msg2
+            }
+			
 if(!sendJid) {
-await conn.sendMessage(id ,{image:{url: info.result.data.images[0]},caption: sendInfomsg})	
+await conn.sendMessage(id, msg3, {quoted: mek})
 			} else {
-await conn.sendMessage(sendJid ,{image:{url: info.result.data.images[0]},caption: sendInfomsg})	
+await conn.sendMessage(sendJid, msg3, {quoted: mek})
 			}
 			
 }
