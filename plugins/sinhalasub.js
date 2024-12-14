@@ -157,7 +157,7 @@ let sendInfomsg = `🍟 *${info.result.data.title}*
 const msg = {
             externalAdReply: { 
 				mediaType: 1,
-		    	
+				sourceUrl: `${array[index-1].link}` ,
                 		thumbnailUrl: `${info.result.data.images[0]}` ,
 				renderLargerThumbnail: true,
           			showAdAttribution: true
