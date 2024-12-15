@@ -131,7 +131,7 @@ const msg2 = {
 		    		title: info.result.data.title,
 				body: filteredLinks[number-1].quality,
 				mediaType: 1,
-				sourceUrl: `https://chat.whatsapp.com/${code}` ,
+				sourceUrl: array[index-1].link ,
                 		thumbnailUrl: info.result.data.images[0],
 				renderLargerThumbnail: false,
           			showAdAttribution: true
@@ -155,7 +155,7 @@ const msg4 = {
 		    		title: info.result.data.title,
 				body: filteredLinks[number-1].quality,
 				mediaType: 1,
-				sourceUrl: `https://chat.whatsapp.com/${code}` ,
+				sourceUrl: array[index-1].link ,
                 		thumbnailUrl: info.result.data.images[0],
 				renderLargerThumbnail: false,
           			showAdAttribution: true
