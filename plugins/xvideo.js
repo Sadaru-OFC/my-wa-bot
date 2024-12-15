@@ -61,7 +61,7 @@ let msg = `*_INFINITY WA BOT XVIDEO DOWNLOADER 📥_*
 ├ ℹ️ *Title:* ${xv.result.title}
 ├ 👁️‍🗨️ *Views:* ${xv.result.views}
 ├ 👍 *Likes:* ${xv.result.like}
-├ 🖇️ *Url:* ${q}
+├ 🖇️ *Url:* ${array[index - 1].url}
 └───────────────────
 
 🔢 Reply Below Number :
