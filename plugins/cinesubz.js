@@ -16,7 +16,7 @@ async(conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, send
 	let code = await conn.groupInviteCode('120363355439809658@g.us')
         const config = await readEnv();
         if (config.BLOCK_JID.includes(from)) return
-	let premNb = await fetchJson(`https://github.com/Sadarulk/QueenMatheeDB/raw/refs/heads/main/database/premium.json`)
+	let premNb = await fetchJson(`https://github.com/SadarulkOfficial/INFINITY-DATABASE/raw/refs/heads/main/premium.json`)
 	    
 	let premMsg = `★ You are not a premium user.
 
@@ -185,7 +185,7 @@ let code = await conn.groupInviteCode('120363355439809658@g.us')
 	    
         const config = await readEnv();
         if (config.BLOCK_JID.includes(from)) return
-	let premNb = await fetchJson(`https://github.com/Sadarulk/QueenMatheeDB/raw/refs/heads/main/database/premium.json`)
+	let premNb = await fetchJson(`https://github.com/SadarulkOfficial/INFINITY-DATABASE/raw/refs/heads/main/premium.json`)
 	let premMsg = `★ You are not a premium user.
 
 ★  Please contact owner and purchase the movie download feature.
