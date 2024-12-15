@@ -215,7 +215,7 @@ let data = await fetchJson(`https://api.techniknews.net/ipgeo/${q}`)
 let msg = `*_INFINITY WA BOT IP INFO_*
 
 ` +
-'*🔴 ' + IP +'* ```' + data.ip + '```\n' +
+'*🔴 ' + IP +'* ' + data.ip + '\n' +
     '*🌐' + CONTINENT +'* ' + data.continent+ '\n' +
     '*🗺' + COUNTRY +'* ' + data.country+ '\n' +
     '*🔢' + COUNTRYCODE +'* ' + data.countryCode+ '\n' +
@@ -229,6 +229,31 @@ let msg = `*_INFINITY WA BOT IP INFO_*
     + "> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ"
 
 await conn.sendMessage(from, {text:msg}, {quoted:mek})
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
+
+cmd({
+    pattern: "myip",
+    desc: "Get ip address",
+    category: "other",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+const config = await readEnv()
+if(config.BLOCK_JID.includes(from)) return
+
+let response = await axios.get(`https://api.techniknews.net/ip/`)
+let $ = cheerio.load(response.data)
+
+const ip = $('body').text()
+
+reply(ip)
 
 }catch(e){
 console.log(e)
