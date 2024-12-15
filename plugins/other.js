@@ -1,6 +1,8 @@
 const {cmd , commands} = require('../command')
 const {readEnv} = require('../lib/database')
 const { fetchJson } = require('../lib/functions')
+const axios = require('axios')
+const cheerio = require('cheerio')
 
 const apilink = 'https://www.dark-yasiya-api.site'
 
@@ -116,5 +118,69 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
 }catch(e){
 console.log(e)
 reply(`${e}`)
+}
+})
+
+cmd({
+    pattern: "ttinfo",
+    desc: "Get tiktok user info",
+    category: "other",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+const config = await readEnv()
+if(config.BLOCK_JID.includes(from)) return
+if(!q) return reply("*_Please give me a tiktok user name._*")
+
+let response = await axios.get(`https://urlebird.com/user/${q}/`)
+let $ = cheerio.load(response.data)
+
+const errMsg = $('body > div.main > div > h2').text()
+const img = $('body > div.main > div.container-fluid.mt-4.mt-md-2 > div > div.col-md-auto.justify-content-center.text-center > img').attr('src')
+const likes = $('body > div.main > div.container-fluid.mt-4.mt-md-2 > div > div.col-md-auto.text-center.text-md-left.pl-0 > div > div > div > div:nth-child(1)').text()
+const followers = $('body > div.main > div.container-fluid.mt-4.mt-md-2 > div > div.col-md-auto.text-center.text-md-left.pl-0 > div > div > div > div.col-7.col-md-auto.text-truncate').text()
+const following = $('body > div.main > div.container-fluid.mt-4.mt-md-2 > div > div.col-md-auto.text-center.text-md-left.pl-0 > div > div > div > div.col-auto.d-none.d-sm-block.text-truncate').text()
+const bio = $('body > div.main > div.container-fluid.mt-4.mt-md-2 > div > div.col-md-auto.text-center.text-md-left.pl-0 > div > p').text()
+const username = $('body > div.main > div.container-fluid.mt-4.mt-md-2 > div > div.col-md-auto.text-center.text-md-left.pl-0 > h1').text()
+const name = $('body > div.main > div.container-fluid.mt-4.mt-md-2 > div > div.col-md-auto.text-center.text-md-left.pl-0 > div > h5').text()
+
+let msg = `*Name :* ${name}
+
+*Username :* ${username}
+
+*Bio :* ${bio}
+
+*Follownig :* ${following}
+
+*Followers :* ${followers}
+
+*Likes :* ${likes}
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+const fdChannel = {
+            newsletterJid: "120363352976453510@newsletter",
+            newsletterName: "INFINITY WA BOT",
+            serverMessageId: 999
+          };
+          const contextMsg = {
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: fdChannel
+          };
+          const msgBody = {
+	    image: {url: img},
+            caption: msg,
+            contextInfo: contextMsg
+          };
+         await conn.sendMessage(from, msgBody, {
+            'quoted': mek
+          })
+
+}catch(e){
+console.log(e)
+reply(`${errMsg}`)
 }
 })
