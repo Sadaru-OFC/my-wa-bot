@@ -441,7 +441,7 @@ let x = q.split(" & ")
 let b = x[0]
 let c = x[1]
 
-if(!c && !c.endsWith('@g.us')) return reply("*_Please give me a group jid._*")
+if(!c) return reply("*_Please give me a group jid._*")
 
 let newgroupMetadata = await conn.groupMetadata(c)
 let newparticipants = await newgroupMetadata.participants
