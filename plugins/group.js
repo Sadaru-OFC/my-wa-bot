@@ -435,9 +435,6 @@ async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sen
 try{
 
 if(!isOwner) return reply("*_This is an owner cmd._*")
-
-if(!m.quoted) {
-    
 if(!q && !q.includes(' & ')) return reply("*_Please give me a text msg & jid._*")
 
 let x = q.split(" & ")
@@ -451,16 +448,6 @@ let newparticipants = await newgroupMetadata.participants
     
 await conn.sendMessage(c, { text : b , mentions: newparticipants.map(a => a.id)})
 
-} else {
-
-if(!q && !q.endsWith('@g.us')) return reply("*_Please give me a group jid._*")
-    
-let newgroupMetadata = await conn.groupMetadata(q)
-let newparticipants = await newgroupMetadata.participants
-    
-await conn.sendMessage(q, { text : m.quoted , mentions: newparticipants.map(a => a.id)})
-    
-}
 }catch(e){
 console.log(e)
 reply(`${e}`)
