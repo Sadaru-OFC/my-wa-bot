@@ -184,3 +184,54 @@ console.log(e)
 reply(`${errMsg}`)
 }
 })
+
+cmd({
+    pattern: "ipinfo",
+    desc: "Get ip info",
+    category: "other",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+const config = await readEnv()
+if(config.BLOCK_JID.includes(from)) return
+if(!q) return reply("*_Please give me a ip address to get info._*")
+
+const IP = "IP :"
+const CONTINENT = "Continent :"
+const COUNTRY = "Country :"
+const COUNTRYCODE = "Country Code :"
+const REGIONNAME = "Region Name :"
+const CITY = "City :"
+const ZIP = "ZIP :"
+const CURRENCY = "Currency :"
+const TIMEZ = "Time Zone :"
+const ISP = "ISP :"
+const MOBILE = "Mobile :"
+
+let data = await fetchJson(`https://api.techniknews.net/ipgeo/${q}`)
+
+let msg = `*_INFINITY WA BOT IP INFO_*
+
+` +
+'*🔴 ' + IP +'* ```' + data.ip + '```\n' +
+    '*🌐' + CONTINENT +'* ' + data.continent+ '\n' +
+    '*🗺' + COUNTRY +'* ' + data.country+ '\n' +
+    '*🔢' + COUNTRYCODE +'* ' + data.countryCode+ '\n' +
+    '*🌍' + REGIONNAME +'* ' + data.regionName+ '\n' +
+    '*🚩' + CITY +'* ' + data.city+ '\n' +
+    '*🏛' + ZIP +'* ' + data.zip+ '\n' +
+    '*🕐' + TIMEZ +'* ' + data.timezone+ '\n' +
+    '*💸' + CURRENCY +'* ' + data.currency+ '\n' +
+    '*📡' + ISP +'* ' + data.isp+ '\n' +
+    '*📱' + MOBILE +'* ' + data.mobile+ '\n\n'
+    + "> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ"
+
+await conn.sendMessage(from, {text:msg}, {quoted:mek})
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
