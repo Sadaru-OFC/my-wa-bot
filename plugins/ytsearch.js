@@ -25,7 +25,7 @@ const search = await yts(q)
 const array = search.videos;
         
  if (!array || array.length === 0) {
-            return reply("*_Can't find anything._*");
+            return reply("*_Can't find anything._*")
         }
 
 const result = array.map((movie, index) => `${index + 1}. *Title :* ${array[index].title}\n*Duration :* ${array[index].timestamp}\n*Author :* ${array[index].author.name}\n*Link :* ${array[index].url}`).join("\n\n");
