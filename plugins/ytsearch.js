@@ -32,11 +32,8 @@ const result = array.map((movie, index) => `${index + 1}. *Title :* ${array[inde
             
 await conn.sendMessage(from, { text: `${dt} ${result} ${cap}` }, {quoted: mek})
             
-
-    }catch(e){
-     console.log(e)
-     reply(`${e}`)
-
-
+}catch(e){
+console.log(e)
+reply(`${e}`)
 }
 })
