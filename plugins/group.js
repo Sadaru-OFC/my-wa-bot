@@ -411,12 +411,34 @@ filename: __filename
 async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 
-if (!isGroup) return
+if(!isGroup) return
 if(!isOwner) return reply("*_This is an owner cmd._*")
 if(!isBotAdmins) return reply("*_First give me admin._*")
 if(!q) return reply("*_Please give me a msg._*")
     
 await conn.sendMessage(from, { text : q , mentions: participants.map(a => a.id)})
+    
+}catch(e){
+console.log(e)
+reply(`${e}`)
+} 
+})
+
+cmd({
+pattern: "grphidetag",
+alias: ['ghtag', 'grphtag'],
+desc: "Send tag msg",
+category: "group",
+filename: __filename
+},
+async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+if(!isOwner) return reply("*_This is an owner cmd._*")
+if(!m.quoted) return reply("*_Please reply a text msg._*")
+if(!q) return reply("*_Please give me a jid._*")
+    
+await conn.sendMessage(q, { text : m.quoted , mentions: participants.map(a => a.id)})
     
 }catch(e){
 console.log(e)
