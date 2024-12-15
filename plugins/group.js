@@ -431,14 +431,22 @@ desc: "Send tag msg",
 category: "group",
 filename: __filename
 },
-async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupName, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 
 if(!isOwner) return reply("*_This is an owner cmd._*")
-if(!m.quoted) return reply("*_Please reply a text msg._*")
-if(!q) return reply("*_Please give me a jid._*")
+if(!q) return reply("*_Please give me a text msg & jid._*")
+
+let x = q.split(" & ")
+let b = x[0]
+let c = x[1]
+
+if(!c && !c.endsWith('@g.us')) return reply("*_Please give me a group jid._*")
+
+let newgroupMetadata = await conn.groupMetadata(c)
+let newparticipants = await newgroupMetadata.participants
     
-await conn.sendMessage(q, { text : m.quoted , mentions: participants.map(a => a.id)})
+await conn.sendMessage(c, { text : b , mentions: newparticipants.map(a => a.id)})
     
 }catch(e){
 console.log(e)
