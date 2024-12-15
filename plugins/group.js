@@ -378,7 +378,7 @@ desc: "delete message",
 category: "group",
 filename: __filename
 },
-async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants,  isItzcp, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
 try{
 
 if(!isOwner) return reply("*_This is an owner cmd._*")
@@ -396,7 +396,30 @@ const key = {
         await conn.sendMessage(from, { delete: key })
     
 }catch(e){
-console.log(e);
+console.log(e)
+reply(`${e}`)
+} 
+})
+
+cmd({
+pattern: "hidetag",
+alias: ["htag"],
+desc: "Send tag msg",
+category: "group",
+filename: __filename
+},
+async(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+if (!isGroup) return
+if(!isOwner) return reply("*_This is an owner cmd._*")
+if(!isBotAdmins) return reply("*_First give me admin._*")
+if(!q) return reply("*_Please give me a msg._*")
+    
+await conn.sendMessage(from, { text : q , mentions: participants.map(a => a.id)})
+    
+}catch(e){
+console.log(e)
 reply(`${e}`)
 } 
 })
