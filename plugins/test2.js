@@ -15,7 +15,10 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-let response = await axios.get(`https://www.y2mate.com/youtube/${q}`)
+let x = q.replace('https://www.youtube.com/watch?v=', '')
+let y = `https://www.youtubepp.com/watch?v=${x}`
+    
+let response = await axios.get(`${y}`)
 let $ = cheerio.load(response.data)
 
 const title = $('#result > div > div.col-xs-12.col-sm-5.col-md-5 > div > div > b').text()
