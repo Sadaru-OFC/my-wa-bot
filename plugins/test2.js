@@ -1,10 +1,11 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
-const puppeteer = require('puppeteer')
+const axios = require('axios')
+const cheerio = require('cheerio')
 
 cmd({
     pattern: "test2",
-    desc: "test",
+    desc: "hiru news",
     category: "other",
     filename: __filename
 },
@@ -14,25 +15,20 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-const browser = await puppeteer.launch()
-const page = await browser.newPage()
+let response = await axios.get(`https://www.hirunews.lk/`)
+let $ = cheerio.load(response.data)
 
-// Navigate the page to a URL.
-await page.goto('https://www.google.com/')
+const newsUrl = $('body > div:nth-child(18) > div.row > div.col-sm-12.col-md-12.col-lg-6.section.order-lg-2.order-md-1.order-sm-1.order-1 > div > div.today-video > div.main-article-banner > a').attr('href')
 
-// Set screen size.
-await page.setViewport({width: 1080, height: 1024})
+console.log(newsUrl)
+    
+let newResponse = await axios.get(newsUrl)
+$ = cheerio.load(newResponse.data)
 
-// Type into search box.
-await page.locator('.emcav textarea.gLFyf').fill('whatsapp')
+const title = $('body > div:nth-child(18) > center > h1').text()
 
-// Wait and click on first result.
-const fullTitle = await page.locator('element.style').click()
-
-console.log(fullTitle)
-
-await browser.close()
-  
+console.log(title)
+    
 }catch(e){
 console.log(e)
 reply(`${e}`)
