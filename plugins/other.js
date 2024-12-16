@@ -146,7 +146,9 @@ const bio = $('body > div.main > div.container-fluid.mt-4.mt-md-2 > div > div.co
 const username = $('body > div.main > div.container-fluid.mt-4.mt-md-2 > div > div.col-md-auto.text-center.text-md-left.pl-0 > h1').text()
 const name = $('body > div.main > div.container-fluid.mt-4.mt-md-2 > div > div.col-md-auto.text-center.text-md-left.pl-0 > div > h5').text()
 
-let msg = `*Name :* ${name}
+let msg = `*_INFINITY WA BOT TIKTOK USER INFO_*
+
+*Name :* ${name}
 
 *Username :* ${username}
 
