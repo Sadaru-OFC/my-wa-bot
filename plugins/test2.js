@@ -5,7 +5,7 @@ const cheerio = require('cheerio')
 
 cmd({
     pattern: "test2",
-    desc: "hiru news",
+    desc: "test",
     category: "other",
     filename: __filename
 },
@@ -15,17 +15,14 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-let response = await axios.get(`https://www.hirunews.lk/`)
+let response = await axios.get(`https://www.y2mate.com/youtube/${q}`)
 let $ = cheerio.load(response.data)
 
-const newsUrl = $('body > div:nth-child(18) > div.row > div.col-sm-12.col-md-12.col-lg-6.section.order-lg-2.order-md-1.order-sm-1.order-1 > div > div.today-video > div.main-article-banner > a').attr('href')
-
-let newResponse = await axios.get(`${newsUrl}`)
-$ = cheerio.load(newResponse.data)
-
-const title = $('body > div:nth-child(18) > center > h1').text()
+const title = $('#result > div > div.col-xs-12.col-sm-5.col-md-5 > div > div > b').text()
+const img = $('#result > div > div.col-xs-12.col-sm-5.col-md-5 > div > img').attr('src')
 
 console.log(title)
+console.log(img)
     
 }catch(e){
 console.log(e)
