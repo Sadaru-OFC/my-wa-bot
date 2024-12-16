@@ -16,6 +16,7 @@
     "util": "^0.12.4",
     "express": "latest",
     "axios": "^1.2.5",
+    "puppeteer": "23.10.4",
     "file_size_url": "^1.0.4",
     "fs-extra": "^11.1.0",
     "path": "^0.12.7",
