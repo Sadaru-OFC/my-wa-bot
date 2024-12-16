@@ -15,8 +15,7 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-let x = q.replace('https://www.youtube.com/watch?v=', '')
-let y = `https://www.youtubepp.com/watch?v=${x}`
+let y = `https://www.youtubepp.com/watch?v=${q}`
     
 let response = await axios.get(`${y}`)
 let $ = cheerio.load(response.data)
