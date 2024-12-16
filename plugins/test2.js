@@ -19,11 +19,9 @@ let response = await axios.get(`https://www.y2mate.com/youtube/${q}`)
 let $ = cheerio.load(response.data)
 
 const title = $('#result > div > div.col-xs-12.col-sm-5.col-md-5 > div > div > b').text()
-const img = $('#result > div > div.col-xs-12.col-sm-5.col-md-5 > div > img').attr('src')
 
 console.log(title)
-console.log(img)
-    
+
 }catch(e){
 console.log(e)
 reply(`${e}`)
