@@ -14,13 +14,11 @@ try{
 
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
-
-let y = `https://www.youtubepp.com/watch?v=${q}`
     
-let response = await axios.get(`${y}`)
+let response = await axios.get(`https://utomp3.com/youtube-converter/youtube/0geqOYqwL0s`)
 let $ = cheerio.load(response.data)
 
-const title = $('#result > div > div.col-xs-12.col-sm-5.col-md-5 > div > div > b').text()
+const title = $('#content-box > div > div.right > h2').text()
 
 console.log(title)
 
