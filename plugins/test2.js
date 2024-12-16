@@ -14,31 +14,24 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-const browser = await puppeteer.launch();
-const page = await browser.newPage();
+const browser = await puppeteer.launch()
+const page = await browser.newPage()
 
 // Navigate the page to a URL.
-await page.goto('https://developer.chrome.com/');
+await page.goto('https://www.google.com/')
 
 // Set screen size.
-await page.setViewport({width: 1080, height: 1024});
+await page.setViewport({width: 1080, height: 1024})
 
 // Type into search box.
-await page.locator('.devsite-search-field').fill('automate beyond recorder');
+await page.locator('.emcav textarea.gLFyf').fill('whatsapp')
 
 // Wait and click on first result.
-await page.locator('.devsite-result-item-link').click();
+const fullTitle = await page.locator('element.style').click()
 
-// Locate the full title with a unique string.
-const textSelector = await page
-  .locator('text/Customize and automate')
-  .waitHandle();
-const fullTitle = await textSelector?.evaluate(el => el.textContent);
+console.log(fullTitle)
 
-// Print the full title.
-console.log('The title of this blog post is "%s".', fullTitle);
-
-await browser.close();
+await browser.close()
   
 }catch(e){
 console.log(e)
