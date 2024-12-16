@@ -20,7 +20,7 @@ let $ = cheerio.load(response.data)
 
 const newsUrl = $('body > div:nth-child(18) > div.row > div.col-sm-12.col-md-12.col-lg-6.section.order-lg-2.order-md-1.order-sm-1.order-1 > div > div.today-video > div.main-article-banner > a').attr('href')
 
-let newResponse = await axios.get('newsUrl')
+let newResponse = await axios.get(`${newsUrl}`)
 $ = cheerio.load(newResponse.data)
 
 const title = $('body > div:nth-child(18) > center > h1').text()
