@@ -21,20 +21,11 @@ let $ = cheerio.load(response.data)
     
 let title = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.title > a').text()
 
-let image = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.image > div > a > img').attr('src')
-
-let link = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.image > div > a').attr('href')
-
-let rating = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.meta > span:nth-child(1)').text()
-
-let year = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.meta > span.year').text()
+const name = title.map((link, index) => {
+            return `$('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(`${index + 2}`) > article > div.details > div.title > a').text()` 
+        }).join("\n")
     
-    console.log(title)
-    console.log(image)
-    console.log(year)
-    console.log(rating)
-    console.log(link)
-       
+    console.log(name)
     
 }catch(e){
 console.log(e)
