@@ -19,13 +19,10 @@ if(!q) return
 let response = await axios.get(`https://cinesubz.co/?s=${q}`)
 let $ = cheerio.load(response.data)
     
-let title = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.title > a').text()
-
-const name = title.map((link, index) => {
-            return `$('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(`${index + 2}`) > article > div.details > div.title > a').text()` 
-        }).join("\n")
-    
-    console.log(name)
+$('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.title > a').each((index, element) => {
+ let title = (element).text()
+    console.log(title)
+})
     
 }catch(e){
 console.log(e)
