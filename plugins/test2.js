@@ -15,25 +15,12 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
     
-const url = `https://cinesubz.co/?s=${q}`;
+let response = await axios.get(q)
+let $ = cheerio.load(response.data)
 
-axios.get(url)
-  .then(response => {
-    const html = response.data;
-    const $ = cheerio.load(html);
+const title = $('#box > div.download-section > p:nth-child(2) > span').text()
 
-    // Extract the data you need from the search results
-    $('#contenedor > div.module > div.content.rigth.csearch > div.search-page').each((index, element) => {
-      const title = $(element).find('article > div.details > div.title > a').text();
-      const link = $(element).find('article > div.image > div > a').attr('href');
-      
-      console.log(`Link: ${link}\n`);
-    });
-  })
-  .catch(error => {
-    console.error('Error fetching search results:', error);
-  });
-
+console.log(title)
 
 }catch(e){
 console.log(e)
