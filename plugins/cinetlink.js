@@ -26,7 +26,7 @@ let $ = cheerio.load(response.data)
 
 const fileName = $('#box > div.download-section > p:nth-child(2) > span').text().trim()
 const size = $('#box > div.download-section > p:nth-child(3) > span').text().trim()
-const teleDl = $('#link7').attr('href')
+const teleDl = $('#link7').attr('href').trim()
     
 let msg = `*File name :* ${fileName}
 
