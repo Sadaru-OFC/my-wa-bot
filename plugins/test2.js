@@ -15,16 +15,25 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
     
-let response = await axios.get(`https://www.pornhub.com/view_video.php?viewkey=65804ef33f460`)
-let $ = cheerio.load(response.data)
-    
-const title = $('#hd-leftColVideoPage > div:nth-child(1) > div.title-container > h1 > span').text()
+const url = `https://cinesubz.co/?s=${q}`;
 
-console.log(title)
+axios.get(url)
+  .then(response => {
+    const html = response.data;
+    const $ = cheerio.load(html);
 
-let newTitle = title.replace(' ', '-')
-    
-console.log(newTitle)
+    // Extract the data you need from the search results
+    $('#contenedor > div.module > div.content.rigth.csearch').each((index, element) => {
+      const title = $(element).find('div.search-page > div:nth-child(2) > article > div.details > div.title > a').text();
+      const link = $(element).find('div.search-page > div:nth-child(2) > article > div.image > div > a').attr('href');
+      
+      console.log(`Title: ${title}\nLink: ${link}\n`);
+    });
+  })
+  .catch(error => {
+    console.error('Error fetching search results:', error);
+  });
+
 
 }catch(e){
 console.log(e)
