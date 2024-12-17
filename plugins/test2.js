@@ -14,16 +14,14 @@ try{
 
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
-if(!q) return
     
-let response = await axios.get(`https://cinesubz.co/?s=${q}`)
+let response = await axios.get(`https://www.saveporn.net/view_video.php?viewkey=65804ef33f460`)
 let $ = cheerio.load(response.data)
     
-$('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.title > a').each((index, element) => {
-    const title = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child([${index + 2}]) > article > div.details > div.title > a').text()
-            console.log(title)
-})
+const title = $('body > main > section.e.j.d2.dsection > h2').text()
     
+console.log(title)
+
 }catch(e){
 console.log(e)
 reply(`${e}`)
