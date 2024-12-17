@@ -17,12 +17,15 @@ if(config.BLOCK_JID.includes(from)) return
 if(!q) return reply("*_Please give me a title._*")
 
 const yt = await ytsearch(q)
-
+const yts = yt.results[0]
+const ytdl = await ytmp3(yts.url)
+    
 let result = yt.results  
 let length = yt.results.length
-
-console.log(length)
-console.log(result)
+let ytdlLength = ytdl.download.length
+    
+console.log(ytdlLength)
+console.log(ytdl)
 
 }catch(e){
 console.log(e)
