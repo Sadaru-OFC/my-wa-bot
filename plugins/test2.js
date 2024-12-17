@@ -18,8 +18,8 @@ if(config.BLOCK_JID.includes(from)) return
 let response = await axios.get(q)
 let $ = cheerio.load(response.data)
 
-const title = $('title').text()
-const size = $('#box > div.download-section > p:nth-child(3) > span').text()
+const title = $('title').text().trim()
+const size = $('#box > div.download-section > p:nth-child(3) > span').text().trim()
     
 let msg = `*Name :* ${title}
 
