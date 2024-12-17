@@ -26,13 +26,16 @@ let $ = cheerio.load(response.data)
 
 const fileName = $('#box > div.download-section > p:nth-child(2) > span').text().trim()
 const size = $('#box > div.download-section > p:nth-child(3) > span').text().trim()
-const teleDl = $('#link7').attr('href').trim()
+const teleDl = $('#link7 > a').attr('href')
+const megaDl = $('#link4 > a').attr('href')
     
 let msg = `*File name :* ${fileName}
 
 *Size :* ${size}
 
 *Telegram DL :* ${teleDl}
+
+*Mega.nz DL :* ${teleDl}
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
