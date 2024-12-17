@@ -27,7 +27,7 @@ axios.get(url)
       const title = $(element).find('article > div.details > div.title > a').text();
       const link = $(element).find('article > div.image > div > a').attr('href');
       
-      console.log(`Title: ${title}\nLink: ${link}\n`);
+      console.log(`Link: ${link}\n`);
     });
   })
   .catch(error => {
