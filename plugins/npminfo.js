@@ -25,10 +25,8 @@ let response = await axios.get(`https://www.npmjs.com/package/${q}`)
 let $ = cheerio.load(response.data)
 
 const name = $('#top > div.w-100.ph0-l.ph3.ph4-m > h2 > span').text().trim()
-const version = $('#top > div.w-100.ph0-l.ph3.ph4-m > span:nth-child(2)').text().trim()
+const version = $('#top > div.fdbf4038.w-third-l.mt3.w-100.ph3.ph4-m.pv3.pv0-l > div:nth-child(8) > div > p').text().trim()
 const date = $('#top > div.w-100.ph0-l.ph3.ph4-m > span:nth-child(4) > time').text().trim()
-const size = $('#top > div.fdbf4038.w-third-l.mt3.w-100.ph3.ph4-m.pv3.pv0-l > div:nth-child(9) > p').text().trim()
-const files = $('#top > div.fdbf4038.w-third-l.mt3.w-100.ph3.ph4-m.pv3.pv0-l > div:nth-child(10) > p').text().trim()
 const ghlink = $('#repository-link').text().trim()
     
 let msg = `*_INFINITY WA BOT NPM INFO_*
@@ -38,10 +36,6 @@ let msg = `*_INFINITY WA BOT NPM INFO_*
 *Version :* ${version}
 
 *Published :* ${date}
-
-*Unpacked Size :* ${size}
-
-*Total Files :* ${files}
 
 *Repository :* ${ghlink}
 
