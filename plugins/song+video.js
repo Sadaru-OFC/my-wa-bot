@@ -75,12 +75,12 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
                 switch (selectedOption) {
                     case '1':
 
-                        await conn.sendMessage(from,{audio: {url: data.download.url },mimetype:"audio/mpeg"},{quoted: inf})
+                        await conn.sendMessage(from,{audio: {url: data.result.download.url },mimetype:"audio/mpeg"},{quoted: inf})
 
                         break; 
                     case '2':
 
-                        await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
+                        await conn.sendMessage(from,{document: {url: data.result.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
 
                         break;
                     default:
@@ -149,12 +149,12 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
                 switch (selectedOption) {
                     case '1':
 
-                        await conn.sendMessage(from,{audio: {url: data.download.url },mimetype:"audio/mpeg"},{quoted: inf})
+                        await conn.sendMessage(from,{audio: {url: data.result.download.url },mimetype:"audio/mpeg"},{quoted: inf})
 
                         break; 
                     case '2':
 
-                        await conn.sendMessage(from,{document: {url: data.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
+                        await conn.sendMessage(from,{document: {url: data.result.download.url },mimetype:"audio/mpeg",fileName: data.result.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
 
                         break;
                     default:
@@ -226,12 +226,12 @@ conn.ev.on('messages.upsert', async (msgUpdate) => {
                 switch (selectedOption) {
                     case '1':
 
-                        await conn.sendMessage(from,{audio: {url: ytdl.download.url },mimetype:"audio/mpeg"},{quoted: inf})
+                        await conn.sendMessage(from,{audio: {url: ytdl.result.download.url },mimetype:"audio/mpeg"},{quoted: inf})
 
                         break; 
                     case '2':
 
-                        await conn.sendMessage(from,{document: {url: ytdl.download.url },mimetype:"audio/mpeg",fileName: yts.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
+                        await conn.sendMessage(from,{document: {url: ytdl.result.download.url },mimetype:"audio/mpeg",fileName: yts.title + ".mp3",caption:"> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ"},{quoted: inf})
 
                         break;
                     default:
