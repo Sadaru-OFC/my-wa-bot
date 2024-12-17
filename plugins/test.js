@@ -64,7 +64,7 @@ allids.forEach((id) => {
     results.push({ quality, DlLinks })
 })
 
-console.log(results)
+console.log(results[0])
     
 }catch(e){
 console.log(e)
