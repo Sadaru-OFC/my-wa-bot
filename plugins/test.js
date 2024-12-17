@@ -20,8 +20,10 @@ let response = await axios.get('https://webtor.io/48dd61a1ca0572a7941a499de12bab
 let $ = cheerio.load(response.data)
 
 const title = $('#file > h1').text().trim()
+const img = $('#list > ul:nth-child(2) > li:nth-child(4) > a').attr('href')
     
 console.log(title)
+console.log(img)
     
 }catch(e){
 console.log(e)
