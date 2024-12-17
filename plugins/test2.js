@@ -15,7 +15,7 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
     
-let response = await axios.get(`https://www.saveporn.net/view_video.php?viewkey=65804ef33f460`)
+let response = await axios.get(`https://www.saveporn.net/download/step-sis-thought-she-was-home-alone4/`)
 let $ = cheerio.load(response.data)
     
 const title = $('body > main > section.e.j.d2.dsection > h2').text()
