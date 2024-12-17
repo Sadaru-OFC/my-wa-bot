@@ -118,7 +118,7 @@ reply(`${e}`)
 })
 
 cmd({
-    pattern: "gemini",
+    pattern: "t2img",
     desc: "AI chat feature",
     category: "ai",
     filename: __filename
@@ -129,10 +129,10 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-const apiKey = 'AIzaSyCIr17SIPzzkMJvPJSlDpHw9YC8Ztxjgyc'; // Replace with your actual API key
+const apiKey = 'sk-proj-t4zK5846mB-K1leChkDuzlZlm8l7LRZdHPhh0PtYtftzkOFzFO52-AF9v606oGJ0xFED5800B537160029B3B9325981d92d1Ab8727A3W3KDSOTM1LFoVAs0u56PQLfuuQFsmYBARUxbH96cpx5Eleeux1ChR3YcA0A';
 
-async function getGeminiResponse(prompt) {
-  const response = await fetch('https://api.gemini.google.com/v1/generateContent', {
+async function generateImage(prompt) {
+  const response = await fetch('https://api.openai.com/v1/images/generations', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${apiKey}`,
@@ -140,18 +140,20 @@ async function getGeminiResponse(prompt) {
     },
     body: JSON.stringify({
       prompt: prompt,
-      model: 'gemini-1.5-flash' // Choose the desired model
+      n: 1,
+      size: '1024x1024'
     })
   });
 
   const data = await response.json();
-  return data.text;
+  const imageUrl = data.data[0].url;
+  return imageUrl;
 }
 
 // Example usage:
-const userPrompt = "What is the meaning of life?";
-const geminiResponse = await getGeminiResponse(userPrompt);
-console.log(geminiResponse);
+const prompt = 'A cat playing chess';
+const imageUrl = await generateImage(prompt);
+console.log(imageUrl); // Use the URL to display the image
 
 }catch(e){
 console.log(e)
