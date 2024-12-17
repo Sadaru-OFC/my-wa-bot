@@ -1,7 +1,6 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
-const axios = require('axios')
-const cheerio = require('cheerio')
+const { ytsearch, ytmp3, ytmp4 } = require('@dark-yasiya/yt-dl.js')
 
 cmd({
     pattern: "test2",
@@ -15,12 +14,15 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
     
-let response = await axios.get('https://utomp3.com/youtube-converter/youtube/0geqOYqwL0s')
-let $ = cheerio.load(response.data)
+if(!q) return reply("*_Please give me a title._*")
 
-const title = $('#content-box > div > div.right > h2').text()
+const yt = await ytsearch(q)
 
-console.log(title)
+let result = yt.results  
+let length = yt.results.length
+
+console.log(length)
+console.log(result)
 
 }catch(e){
 console.log(e)
