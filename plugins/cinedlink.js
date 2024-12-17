@@ -4,7 +4,7 @@ const axios = require('axios')
 const cheerio = require('cheerio')
 
 cmd({
-    pattern: "cinetlink",
+    pattern: "cinedlink",
     desc: "cinesubz.co info",
     category: "other",
     filename: __filename
@@ -16,7 +16,7 @@ const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 let emptyMsg = `*_Please give me a cinesubz.co dl url._*
 
-.cinetlink https://ima04.cskinglk.xyz/server4/new/Deadpool.and.Wolverine.2024.WEBRip-%5BCineSubz.co%5D-720p?ext=mp4
+.cinedlink https://ima04.cskinglk.xyz/server4/new/Deadpool.and.Wolverine.2024.WEBRip-%5BCineSubz.co%5D-720p?ext=mp4
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 if(!q) return reply(emptyMsg)
@@ -26,20 +26,13 @@ let $ = cheerio.load(response.data)
 
 const fileName = $('#box > div.download-section > p:nth-child(2) > span').text().trim()
 const size = $('#box > div.download-section > p:nth-child(3) > span').text().trim()
-const teleDl = $('#link7 > a').attr('href')
-const megaDl = $('#link4 > a').attr('href')
     
 let msg = `*File name :* ${fileName}
 
 *Size :* ${size}
 
-*Telegram DL :* ${teleDl}
-
-*Mega.nz DL :* ${teleDl}
-
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
 
-console.log(msg)
 await reply(msg)
     
 }catch(e){
