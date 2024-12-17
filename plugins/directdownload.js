@@ -62,12 +62,17 @@ let b = a.split(" & ")
 
 let c = b[0]
 let d = b[1]
+let f = b[2]
 
 if(!a) return reply(`*_Please give me a direct link & file name. Ex :- .dirsend <direct link> & <file name>_*`)
 if(!d) return reply("*_Please give me a file name._*")
 
+if(!f){
 await conn.sendMessage( id ,{document: {url: c },mimetype:"video/mp4",fileName: d + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ"})
-
+}else{
+await conn.sendMessage( f ,{document: {url: c },mimetype:"video/mp4",fileName: d + ".mp4",caption:"> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ"})
+}
+	
 }catch(e){
 console.log(e)
 reply(`${e}`)
