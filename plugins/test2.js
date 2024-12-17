@@ -15,12 +15,16 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
     
-let response = await axios.get(`https://www.saveporn.net/download/step-sis-thought-she-was-home-alone4/`)
+let response = await axios.get(`https://www.pornhub.com/view_video.php?viewkey=65804ef33f460`)
 let $ = cheerio.load(response.data)
     
-const title = $('body > main > section.e.j.d2.dsection > h2').text()
-    
+const title = $('#hd-leftColVideoPage > div:nth-child(1) > div.title-container > h1 > span').text()
+
 console.log(title)
+
+let newTitle = title.replace(' ', '-')
+    
+console.log(newTitle)
 
 }catch(e){
 console.log(e)
