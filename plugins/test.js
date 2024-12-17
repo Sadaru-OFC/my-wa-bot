@@ -64,7 +64,11 @@ allids.forEach((id) => {
     results.push({ quality, DlLinks })
 })
 
-console.log(results[0])
+const details = results.map((link, index) => {
+            return `${index + 1}. ${link.quality} : ${link.DlLinks}` 
+        }).join("\n\n")
+
+await reply(details)
     
 }catch(e){
 console.log(e)
