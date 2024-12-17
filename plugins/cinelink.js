@@ -4,7 +4,7 @@ const axios = require('axios')
 const cheerio = require('cheerio')
 
 cmd({
-    pattern: "test",
+    pattern: "cinelink",
     desc: "cinesubz.co info",
     category: "search",
     filename: __filename
@@ -68,7 +68,21 @@ const details = results.map((link, index) => {
             return `${index + 1}. ${link.quality} : ${link.DlLinks}` 
         }).join("\n\n")
 
-await reply(details)
+let msg = `*Movie name :* ${title}
+
+*Date :* ${date}
+
+*Runtime :* ${time}
+
+*Link :* ${url}
+
+*_Download Links_*
+
+${details}
+
+> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
+
+reply(msg)
     
 }catch(e){
 console.log(e)
