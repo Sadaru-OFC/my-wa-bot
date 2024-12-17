@@ -116,3 +116,45 @@ console.log(e)
 reply(`${e}`)
 }
 })
+
+cmd({
+    pattern: "gemini",
+    desc: "AI chat feature",
+    category: "ai",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+
+const config = await readEnv()
+if(config.BLOCK_JID.includes(from)) return
+
+const apiKey = 'AIzaSyCIr17SIPzzkMJvPJSlDpHw9YC8Ztxjgyc'; // Replace with your actual API key
+
+async function getGeminiResponse(prompt) {
+  const response = await fetch('https://api.gemini.google.com/v1/generateContent', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      prompt: prompt,
+      model: 'gemini-1.5-flash' // Choose the desired model
+    })
+  });
+
+  const data = await response.json();
+  return data.text;
+}
+
+// Example usage:
+const userPrompt = "What is the meaning of life?";
+const geminiResponse = await getGeminiResponse(userPrompt);
+console.log(geminiResponse);
+
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
