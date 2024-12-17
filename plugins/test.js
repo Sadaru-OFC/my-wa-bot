@@ -4,8 +4,8 @@ const axios = require('axios')
 const cheerio = require('cheerio')
 
 cmd({
-    pattern: "sintest",
-    desc: "cinesubz.co info",
+    pattern: "test",
+    desc: "test",
     category: "other",
     filename: __filename
 },
@@ -15,31 +15,13 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 let emptyMsg = `*_Please give me a sinhalasub url._*`
-if(!q) return reply(emptyMsg)
     
-let response = await axios.get(q)
+let response = await axios.get('https://webtor.io/48dd61a1ca0572a7941a499de12bab7f057a3d12')
 let $ = cheerio.load(response.data)
 
-const title = $('#single > div.content.right > div.sheader > div.data > div.head > h1').text().trim()
-const date = $('#single > div.content.right > div.sheader > div.data > div.extra > span.date').text().trim()
-const rtime = $('#single > div.content.right > div.sheader > div.data > div.extra > span.runtime').text().trim()
-const country = $('#single > div.content.right > div.sheader > div.data > div.extra > span.country').text().trim()
-const rate = $('#repimdb > strong').text().trim()
-const img = $('#dt_galery > div.owl-wrapper-outer > div > div:nth-child(1) > div > a > img').attr('src')
+const title = $('#file > h1').text().trim()
     
-let msg = `*Name :* ${title}
-
-*Date :* ${date}
-
-*Runtime :* ${rtime}
-
-*Country :* ${country}
-
-*IMDB Rating :* ${rate}
-
-> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`
-
-await conn.sendMessage(from, {image : {url: img} , caption: msg}, {quoted:mek})
+console.log(title)
     
 }catch(e){
 console.log(e)
