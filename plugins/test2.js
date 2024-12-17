@@ -18,10 +18,10 @@ if(config.BLOCK_JID.includes(from)) return
 let response = await axios.get(`https://cinesubz.co/?s=2024`)
 let $ = cheerio.load(response.data)
     
-$('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.title > a').each((index, element) => {
-            const title = $(element).text().trim()
-            console.log(title)
-        })
+let title = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(1) > article > div.details > div.title > a').text()
+    
+console.log(title)
+       
     
 }catch(e){
 console.log(e)
