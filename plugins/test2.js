@@ -23,9 +23,9 @@ axios.get(url)
     const $ = cheerio.load(html);
 
     // Extract the data you need from the search results
-    $('#contenedor > div.module > div.content.rigth.csearch').each((index, element) => {
-      const title = $(element).find('div.search-page > div:nth-child(2) > article > div.details > div.title > a').text();
-      const link = $(element).find('div.search-page > div:nth-child(2) > article > div.image > div > a').attr('href');
+    $('#contenedor > div.module > div.content.rigth.csearch > div.search-page').each((index, element) => {
+      const title = $(element).find('article > div.details > div.title > a').text();
+      const link = $(element).find('article > div.image > div > a').attr('href');
       
       console.log(`Title: ${title}\nLink: ${link}\n`);
     });
