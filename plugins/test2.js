@@ -13,18 +13,10 @@ try{
 
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
-    
-if(!q) return reply("*_Please give me a title._*")
 
-const yt = await ytsearch(q)
-const yts = yt.results[0]
-const ytdl = await ytmp3(yts.url)
+const ytdl = await ytmp3(q)
     
-let result = yt.results  
-let length = yt.results.length
-let ytdlLength = ytdl.download.length
-    
-console.log(ytdlLength)
+console.log(ytdl.length)
 console.log(ytdl)
 
 }catch(e){
