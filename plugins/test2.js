@@ -20,7 +20,7 @@ let response = await axios.get(`https://cinesubz.co/?s=${q}`)
 let $ = cheerio.load(response.data)
     
 $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.title > a').each((index, element) => {
- const title = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child('index + 2') > article > div.details > div.title > a').text()
+    const title = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.title > a').text()
             console.log(title)
 })
     
