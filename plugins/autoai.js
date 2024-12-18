@@ -29,14 +29,14 @@ const prompt = body;
 
 const result = await model.generateContent(prompt);
     
-let result = result.response.text();
+let data = result.response.text();
     
 await conn.sendPresenceUpdate('composing', from)
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 await delay(2000)
 
- return reply(`${result}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
+ return reply(`${data}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
     
 } 
    
