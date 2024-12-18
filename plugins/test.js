@@ -28,8 +28,8 @@ async function getHTML () {
 getHTML().then((res) => {
 const $ = cheerio.load(res);
 $('.ipc-metadata-list ipc-metadata-list--dividers-between sc-a1e81754-0 iyTDQy compact-list-view ipc-metadata-list--base').each((i, movie) => {
-  const title = $(movie).find('.ipc-title__text').text();
-  const rating = $(movie).find('.ipc-rating-star--rating').text();
+  const title = $(movie).find('.ipc-title ipc-title--base ipc-title--title ipc-title-link-no-icon ipc-title--on-textPrimary sc-a69a4297-2 bqNXEn cli-title with-margin > a > h3').text().trim();
+  const rating = $(movie).find('.ipc-rating-star--rating').text().trim();
   moviesData[title] = rating;
 });
   fs.writeFile('moviesData.json', JSON.stringify(moviesData), (err) => {
