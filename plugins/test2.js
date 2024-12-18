@@ -18,7 +18,7 @@ if(config.BLOCK_JID.includes(from)) return
 let response = await axios.get('https://www.youtube.com/')
 let $ = cheerio.load(response.data)
 
-let title = $('#video-title').text()
+let title = $('#contents > ytd-rich-item-renderer:nth-child(1) > #video-title').text()
 
 console.log(title)
 
