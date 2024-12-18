@@ -21,7 +21,11 @@ const url = 'https://www.imdb.com/chart/top/';
 const moviesData = {};
   
 async function getHTML () {
-  const { data: html } = await axios.get(url, { delay: 2000 }); // Add a 2-second delay
+  const { data: html } = await axios.get(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36'
+    }
+  });
   return html;
 };
 
