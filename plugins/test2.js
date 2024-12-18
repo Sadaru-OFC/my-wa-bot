@@ -30,11 +30,13 @@ cmd({
       let results = ''; // String to store formatted results
 
       $('#contenedor > div.module > div.content.rigth.csearch > div.search-page').each((i, movie) => {
-        const title = $(movie).find('.title > a').text().trim().map((index, test) => `${index}`).join('\n');
+        const title = $(movie).find('.title > a').text().trim();
         const rating = $(movie).find('.meta > span:nth-child(1)').text().trim();
-
-       console.log(title)
+        const year = $(movie).find('.meta > year').text().trim();
+        
+        console.log(title)
         console.log(rating)
+        console.log(year)
       });
     });
   } catch (e) {
