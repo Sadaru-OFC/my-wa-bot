@@ -28,12 +28,15 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 const prompt = body;
 
 const result = await model.generateContent(prompt);
-console.log(result.response.text());
+    
+let result = result.response.text();
     
 await conn.sendPresenceUpdate('composing', from)
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 await delay(2000)
+
+ return reply(`${result}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
     
 } 
    
