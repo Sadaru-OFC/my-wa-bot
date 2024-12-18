@@ -21,9 +21,8 @@ if(!q) return reply(emptyMsg)
 let response = await axios.get(q)
 let $ = cheerio.load(response.data)
 
-const url = $('#link > a').attr('href')
+const url = $('#link').attr('href')
 
-reply(url)
 console.log(url)
     
 }catch(e){
