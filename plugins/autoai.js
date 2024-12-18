@@ -36,7 +36,7 @@ await conn.sendPresenceUpdate('composing', from)
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 await delay(2000)
 
- return reply(`${data}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
+ return reply(`${data}\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
     
 } 
    
