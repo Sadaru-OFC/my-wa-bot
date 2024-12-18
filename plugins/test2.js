@@ -15,15 +15,33 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-let response = await axios.get('https://www.youtube.com/')
-let $ = cheerio.load(response.data)
+const url = `https://cinesubz.co/?s=${q}`;
 
-let title = $('#contents > ytd-rich-item-renderer:nth-child(1) > #video-title').text()
+const moviesData = {};
 
-console.log(title)
+async function getHTML () {
+  const { data: html } = await axios.get(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36'
+    }
+  });
+  return html;
+};
+
+getHTML().then((res) => {
+const $ = cheerio.load(res);
+$('#contenedor > div.module > div.content.rigth.csearch > div.search-page').each((i, movie) => {
+  const title = $(movie).find('.article > div.details > div.title > a').text().trim();
+  const rating = $(movie).find('.article > div.details > div.meta > span:nth-child(1)').text().trim();
+  moviesData[title] = rating;
+});
+reply(JSON.stringify(moviesData));
+});
 
 }catch(e){
 console.log(e)
 reply(`${e}`)
 }
 })
+
+
