@@ -26,10 +26,10 @@ async function getHTML () {
 
 getHTML().then((res) => {
 const $ = cheerio.load(res);
-$('#contenedor > div.module > div.content.rigth.csearch > div.search-page').each((i, movie) => {
-  const title = $(movie).find('.article > div.details > div.title > a').text().trim();
-  const rating = $(movie).find('.article > div.details > div.meta > span:nth-child(1)').text().trim();
-  moviesData[title] = rating;
+$('#contenedor > div.module > div.content.rigth.csearch').each((i, movie) => {
+  const title = $(movie).find('.div.details > div.title > a').text().trim();
+  const year = $(movie).find('.div.details > div.meta > span.year').text().trim();
+  moviesData[title] = year;
 });
 console.log(JSON.stringify(moviesData));
 });
