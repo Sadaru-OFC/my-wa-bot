@@ -1,9 +1,11 @@
 const {readEnv} = require('../lib/database')
 const {cmd , commands} = require('../command')
 const { fetchJson } = require('../lib/functions')
+const { GoogleGenerativeAI } = require("@google/generative-ai")
 
 cmd({
-    pattern: "gpt",
+    pattern: "ai",
+    alias: ["gemini"],
     desc: "AI chat feature",
     category: "ai",
     filename: __filename
@@ -15,9 +17,17 @@ const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 if(!q) return reply("*_Please give me a text._*")
 
-let data = await fetchJson(`https://www.dark-yasiya-api.site/ai/chatgpt?q=${q}`)
+const genAI = new GoogleGenerativeAI("AIzaSyBZGOjoskOx_fbOLkRuqQBQcfAx5SMM4as");
 
-return reply(`${data.result}\n\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+const prompt = q;
+
+const result = await model.generateContent(prompt);
+    
+let data = result.response.text();
+
+return reply(`${data}\n> ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴀʀᴜ`)
 
 }catch(e){
 console.log(e)
