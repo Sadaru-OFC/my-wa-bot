@@ -32,8 +32,10 @@ getHTML().then((res) => {
 const $ = cheerio.load(res);
 
 let results = []
+
+let data = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
   
-$('#contenedor > div.module > div.content.rigth.csearch > div.search-page').forEach((movie) => {
+data.forEach((movie) => {
   const title = $(movie).find('.title > a').text().trim();
   const rating = $(movie).find('.meta > span:nth-child(1)').text().trim();
   results.push({ title, rating })
