@@ -34,7 +34,7 @@ $('#__next > main > div > div.ipc-page-content-container.ipc-page-content-contai
   const title = $(movie).find('.ipc-title__text').text().trim();
   const rating = $(movie).find('.ipc-rating-star--rating').text().trim();
 });
-reply(JSON.stringify(moviesData))
+console.log(JSON.stringify(moviesData))
 });
 
 }catch(e){
