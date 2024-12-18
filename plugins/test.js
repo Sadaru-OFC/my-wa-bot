@@ -32,8 +32,8 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
     if (html) {
       const $ = cheerio.load(html);
       $('#__next > main > div > div.ipc-page-content-container.ipc-page-content-container--center > section > div > div.ipc-page-grid.ipc-page-grid--bias-left > div > ul').each((i, movie) => {
-        const title = $(movie).find('.div.ipc-title.ipc-title--base.ipc-title--title.ipc-title-link-no-icon.ipc-title--on-textPrimary.sc-a69a4297-2.bqNXEn.cli-title.with-margin > a > h3').text().trim();
-        const rating = $(movie).find('.span > div > span > span.ipc-rating-star--rating').text().trim();
+        const title = $(movie).find('.ipc-title__text').text().trim();
+        const rating = $(movie).find('.ipc-rating-star--rating').text().trim();
 
         if (title && rating) {
           moviesData[title] = rating;
