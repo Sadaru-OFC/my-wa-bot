@@ -29,20 +29,13 @@ cmd({
       const $ = cheerio.load(res);
       let results = ''; // String to store formatted results
 
-      $('#contenedor > div.module > div.content.rigth.csearch > div.search-page').map((i, movie) => {
+      $('#contenedor > div.module > div.content.rigth.csearch > div.search-page').each((i, movie) => {
         const title = $(movie).find('.title > a').text().trim();
+        let testT = title.map((index, test) => '${test}').join('\n')
         const rating = $(movie).find('.meta > span:nth-child(1)').text().trim();
 
-        // Build the formatted result string
-        results += `${title} : ${rating}\n`; // Use newline character for each entry
+       console.log(testT)
       });
-
-      // Check if any results were found
-      if (results) {
-        reply(results); // Send the formatted results
-      } else {
-        reply('No search results found.'); // Inform user if no movies found
-      }
     });
   } catch (e) {
     console.log(e);
