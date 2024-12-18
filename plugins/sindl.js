@@ -24,11 +24,15 @@ let $ = cheerio.load(response.data)
 const url = $('#link').attr('href')
 const title = $('title').text().trim()
 const mUrl = $('body > div > div > div > div.inside > small:nth-child(4) > a').attr('href')
-    
+
+console.log(mUrl)
+	
 let result = await axios.get(`${mUrl}`)
 $ = cheerio.load(result.data)
 
 const img = $('#dt_galery > div.owl-wrapper-outer > div > div:nth-child(1) > div > a > img').attr('src')
+
+console.log(img)
     
 let pmsg = `*_INFINITY WA BOT Sinhalasub.lk DOWNLOADER 📥_*
 
@@ -57,7 +61,7 @@ let caption = `_${title}_
 
 > ɪɴꜰɪɴɪᴛʏ ᴡʜᴀᴛꜱᴀᴘᴘ ʙᴏᴛ`
     
-let send = await conn.sendMessage(from,{image:{url: img},caption:pmsg},{quoted:mek})
+let send = await conn.sendMessage(from,{text:pmsg},{quoted:mek})
 
 conn.ev.on('messages.upsert', async (msgUpdate) => {
             const msg = msgUpdate.messages[0];
@@ -81,7 +85,7 @@ await conn.sendMessage(from,{document: {url: newUrl },mimetype:"video/mp4",fileN
     
 } else {
 
-await conn.sendMessage(from,{image:{url: img},caption: omsg},{quoted:mek})
+await conn.sendMessage(from,{text: omsg},{quoted:mek})
     
 }
     
