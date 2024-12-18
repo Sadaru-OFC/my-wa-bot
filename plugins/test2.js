@@ -31,11 +31,11 @@ async function getHTML () {
 getHTML().then((res) => {
 const $ = cheerio.load(res);
   
-const titles = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+const titles = { $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
   .find('.title > a')
   .map((i, el) => $(el).text().trim())
   .get()
-  .join('\n');
+  .join(',') }
 
 const ratings = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
   .find('.meta > span:nth-child(1)')
@@ -59,12 +59,11 @@ const urls = $('#contenedor > div.module > div.content.rigth.csearch > div.searc
   .find('.image > div > a')
   .map((i, el) => $(el).attr('href'))
   .get()
-  .join('\n');
+  .join('\n\n');
 
-let nTitle = JSON.stringify(titles)
+console.log(titles)
+reply(urls)
   
-console.log(nTitle[0]);
-
 });
 
 }catch(e){
