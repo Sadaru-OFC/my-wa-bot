@@ -30,7 +30,7 @@ console.log(mUrl)
 let result = await axios.get(`${mUrl}`)
 $ = cheerio.load(result.data)
 
-const img = $('#dt_galery > div.owl-wrapper-outer > div > div:nth-child(1) > div > a > img').attr('src')
+const img = $('body > table > tbody > tr:nth-child(1075) > td.line-content > span:nth-child(3) > a').attr('src')
 
 console.log(img)
     
