@@ -49,9 +49,23 @@ const dates = $('#contenedor > div.module > div.content.rigth.csearch > div.sear
   .get()
   .join('\n');
 
+const imgs = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+  .find('.image > div > a > img')
+  .map((i, el) => $(el).attr('src'))
+  .get()
+  .join('\n');
+
+const urls = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+  .find('.image > div > a')
+  .map((i, el) => $(el).attr('href'))
+  .get()
+  .join('\n');
+
 console.log(titles);
 console.log(ratings);
 console.log(dates);
+console.log(imgs);
+console.log(urls);
 
 });
 
