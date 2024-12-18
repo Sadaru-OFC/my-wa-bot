@@ -27,16 +27,17 @@ cmd({
 
     getHTML().then((res) => {
       const $ = cheerio.load(res);
-      let results = ''; // String to store formatted results
-
-      const titles = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+$('#contenedor > div.module > div.content.rigth.csearch > div.search-page').each((i, movie) => {
+  const title = $(movie)
   .find('.title > a')
   .map((i, el) => $(el).text().trim())
   .get()
-  .join(', '); 
+  .join(' , '); 
 
-console.log(titles);
-    });
+});
+console.log(title)
+});
+    
   } catch (e) {
     console.log(e);
     reply(`${e}`);
