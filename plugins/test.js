@@ -36,7 +36,7 @@ $('#__next > main > div > div.ipc-page-content-container.ipc-page-content-contai
   const rating = $(movie).find('.ipc-rating-star--rating').text().trim();
   moviesData[title] = rating;
 });
-fs.writeFile('/moviesData.json', JSON.stringify(moviesData), (err) => {
+fs.writeFile('__dirname + /moviesData.json', JSON.stringify(moviesData), (err) => {
     if (err) throw err;
     console.log('File saved!');
 });
