@@ -33,8 +33,9 @@ const $ = cheerio.load(res);
 $('#__next > main > div > div.ipc-page-content-container.ipc-page-content-container--center > section > div > div.ipc-page-grid.ipc-page-grid--bias-left > div > ul').each((i, movie) => {
   const title = $(movie).find('.ipc-title__text').text().trim();
   const rating = $(movie).find('.ipc-rating-star--rating').text().trim();
+  moviesData[title] = rating;
 });
-console.log(JSON.stringify(moviesData))
+reply(JSON.stringify(moviesData))
 });
 
 }catch(e){
