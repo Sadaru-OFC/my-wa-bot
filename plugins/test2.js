@@ -70,7 +70,7 @@ results.push({ titles, ratings });
   console.log(years);
   console.log(imgs);
   reply(urls);
-  console.log(results);
+  console.log(results[0]);
   
 });
 
