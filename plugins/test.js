@@ -35,8 +35,8 @@ $('#__next > main > div > div.ipc-page-content-container.ipc-page-content-contai
   const title = $(movie).find('.div.ipc-title.ipc-title--base.ipc-title--title.ipc-title-link-no-icon.ipc-title--on-textPrimary.sc-a69a4297-2.bqNXEn.cli-title.with-margin > a > h3').text().trim();
   const rating = $(movie).find('.span > div > span > span.ipc-rating-star--rating').text().trim();
   moviesData[title] = rating;
+console.log(moviesData);
 });
-console.log(moviesData)
 });
   
 }catch(e){
