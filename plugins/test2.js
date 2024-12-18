@@ -29,7 +29,7 @@ cmd({
       const $ = cheerio.load(res);
       let results = ''; // String to store formatted results
 
-      $('#contenedor > div.module > div.content.rigth.csearch > div.search-page').each((i, movie) => {
+      $('#contenedor > div.module > div.content.rigth.csearch > div.search-page').map((i, movie) => {
         const title = $(movie).find('.title > a').text().trim();
         const rating = $(movie).find('.meta > span:nth-child(1)').text().trim();
 
