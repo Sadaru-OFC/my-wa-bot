@@ -28,7 +28,7 @@ const mUrl = $('body > div > div > div > div.inside > small:nth-child(4) > a').a
 let result = await axios.get(`${mUrl}`)
 $ = cheerio.load(result.data)
 
-const img = $('body > table > tbody > tr:nth-child(1076) > td.line-content > span:nth-child(2) > a').attr('href')
+const img = $('#single > div.content.right > div.sheader > div.poster > img').attr('src')
 
 console.log(img)
     
