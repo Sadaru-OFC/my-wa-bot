@@ -16,23 +16,13 @@ const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
 const url = `https://cinesubz.co/?s=${q}`;
+const res = await axios.get(url)
+const $ = cheerio.load(res.data);
 
-const moviesData = {};
-
-async function getHTML () {
-  const { data: html } = await axios.get(url);
-  return html;
-};
-
-getHTML().then((res) => {
-const $ = cheerio.load(res);
-$('#contenedor > div.module > div.content.rigth.csearch').each((i, movie) => {
-  const title = $(movie).find('.div.details > div.title > a').text().trim();
-  const year = $(movie).find('.div.details > div.meta > span.year').text().trim();
-  moviesData[title] = year;
-});
-console.log(JSON.stringify(moviesData));
-});
+  const title = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.title > a').text().trim();
+  const year = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.meta > span.year').text().trim();
+  
+console.log(`${title} : ${year}`)
 
 }catch(e){
 console.log(e)
