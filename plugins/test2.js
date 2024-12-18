@@ -29,15 +29,13 @@ cmd({
       const $ = cheerio.load(res);
       let results = ''; // String to store formatted results
 
-      $('#contenedor > div.module > div.content.rigth.csearch > div.search-page').each((i, movie) => {
-        const title = $(movie).find('.title > a').text().trim().join(' , ');
-        const rating = $(movie).find('.meta > span:nth-child(1)').text().trim();
-        const year = $(movie).find('.meta > span.year').text().trim();
-        
-        console.log(title)
-        console.log(rating)
-        console.log(year)
-      });
+      const titles = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+  .find('.title > a')
+  .map((i, el) => $(el).text().trim())
+  .get()
+  .join(', '); 
+
+console.log(titles);
     });
   } catch (e) {
     console.log(e);
