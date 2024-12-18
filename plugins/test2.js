@@ -15,26 +15,12 @@ try{
 const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
-const url = 'https://www.youtube.com/';
+let response = await axios.get('https://www.youtube.com/')
+let $ = cheerio.load(response.data)
 
-const ytData = {};
+let title = $('#video-title').text()
 
-async function getHTML () {
-  const { data: html } = await axios.get(url, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36'
-    }
-  });
-  return html;
-};
-
-getHTML().then((res) => {
-const $ = cheerio.load(res);
-$('#video-title').each((i, ytvid) => {
-  const title = $(ytvid).text().trim();
-  console.log(title);
-});
-});
+console.log(title)
 
 }catch(e){
 console.log(e)
