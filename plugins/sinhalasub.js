@@ -196,18 +196,14 @@ let sendInfomsg = `🍟 *${info.result.data.title}*
 
 const msg = {
             externalAdReply: { 
-		    		title: 'Infinity Movie World',
-				mediaType: 1,
-				sourceUrl: `https://chat.whatsapp.com/${code}`,
-                		thumbnailUrl: `${info.result.data.images[0]}`,
-				renderLargerThumbnail: true,
           			showAdAttribution: true
 	    		}
           }
 
 const msg2 = {
-              text: sendInfomsg,
-              contextInfo: msg
+		image: {url: info.result.data.images[0]},
+        	caption: sendInfomsg,
+        	contextInfo: msg
             }
 			
 if(!sendJid) {
