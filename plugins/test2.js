@@ -31,20 +31,47 @@ async function getHTML () {
 getHTML().then((res) => {
 const $ = cheerio.load(res);
 
-let results = []
-
-let data = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+let results = [];
   
-data.forEach((movie) => {
-  const title = $(movie).find('.title > a').text().trim();
-  const rating = $(movie).find('.meta > span:nth-child(1)').text().trim();
-  results.push({ title, rating })
-});
+const titles = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+  .find('.title > a')
+  .map((i, el) => $(el).text().trim())
+  .get()
+  .join('\n');
 
-const details = results.map((link, index) => {
-            return `${index + 1}. ${link.title} : ${link.rating}` 
-        }).join("\n\n")
-  console.log(details)
+const ratings = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+  .find('.meta > span:nth-child(1)')
+  .map((i, el) => $(el).text().trim())
+  .get()
+  .join('\n');
+
+const years = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+  .find('.meta > span.year')
+  .map((i, el) => $(el).text().trim())
+  .get()
+  .join('\n');
+
+const imgs = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+  .find('.image > div > a > img')
+  .map((i, el) => $(el).attr('src'))
+  .get()
+  .join('\n');
+
+const urls = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+  .find('.image > div > a')
+  .map((i, el) => $(el).attr('href'))
+  .get()
+  .join('\n\n');
+
+results.push({ titles, ratings });
+
+  console.log(titles);
+  console.log(ratings);
+  console.log(years);
+  console.log(imgs);
+  reply(urls);
+  console.log(results);
+  
 });
 
 }catch(e){
