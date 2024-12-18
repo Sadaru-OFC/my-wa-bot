@@ -61,11 +61,9 @@ const urls = $('#contenedor > div.module > div.content.rigth.csearch > div.searc
   .get()
   .join('\n');
 
-console.log(JSON.stringify(titles));
-console.log(ratings);
-console.log(dates);
-console.log(imgs);
-console.log(urls);
+let nTitle = JSON.stringify(titles)
+  
+console.log(nTitle[0]);
 
 });
 
