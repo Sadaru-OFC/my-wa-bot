@@ -34,13 +34,17 @@ const $ = cheerio.load(res);
 $('#__next > main > div > div.ipc-page-content-container.ipc-page-content-container--center > section > div > div.ipc-page-grid.ipc-page-grid--bias-left > div > ul').each((i, movie) => {
   const title = $(movie).find('.div.ipc-title.ipc-title--base.ipc-title--title.ipc-title-link-no-icon.ipc-title--on-textPrimary.sc-a69a4297-2.bqNXEn.cli-title.with-margin > a > h3').text().trim();
   const rating = $(movie).find('.span > div > span > span.ipc-rating-star--rating').text().trim();
-  moviesData[title] = rating;
-});
- fs.writeFile('/my_data/moviesData.json', JSON.stringify(moviesData), (err) => {
-    if (err) throw err;
-    console.log('file saved!');
+  if (title && rating) {
+          moviesData[title] = rating;
+        }
+      });
+
+      console.log('Scraped movie data:', moviesData);
+    }
+  })
+  .catch((error) => {
+    console.error('Error scraping data:', error);
   });
-});
   
 }catch(e){
 console.log(e)
