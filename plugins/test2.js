@@ -16,18 +16,30 @@ const config = await readEnv()
 if(config.BLOCK_JID.includes(from)) return
 
 const url = `https://cinesubz.co/?s=${q}`;
-const res = await axios.get(url)
-const $ = cheerio.load(res.data);
 
-  const title = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.title > a').text().trim();
-  const year = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page > div:nth-child(2) > article > div.details > div.meta > span.year').text().trim();
-  
-console.log(`${title} : ${year}`)
+const moviesData = {};
+
+async function getHTML () {
+  const { data: html } = await axios.get(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36'
+    }
+  });
+  return html;
+};
+
+getHTML().then((res) => {
+const $ = cheerio.load(res);
+$('#contenedor > div.module > div.content.rigth.csearch > div.search-page').each((i, movie) => {
+  const title = $(movie).find('.title > a').text().trim();
+  const rating = $(movie).find('.meta > span:nth-child(1)').text().trim();
+  moviesData[title] = rating;
+});
+reply(JSON.stringify(moviesData))
+});
 
 }catch(e){
 console.log(e)
 reply(`${e}`)
 }
 })
-
-
