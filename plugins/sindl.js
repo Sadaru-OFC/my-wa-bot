@@ -24,13 +24,11 @@ let $ = cheerio.load(response.data)
 const url = $('#link').attr('href')
 const title = $('title').text().trim()
 const mUrl = $('body > div > div > div > div.inside > small:nth-child(4) > a').attr('href')
-
-console.log(mUrl)
 	
 let result = await axios.get(`${mUrl}`)
 $ = cheerio.load(result.data)
 
-const img = $('body > table > tbody > tr:nth-child(1075) > td.line-content > span:nth-child(3) > a').attr('src')
+const img = $('body > table > tbody > tr:nth-child(1076) > td.line-content > span:nth-child(2) > a').attr('href')
 
 console.log(img)
     
