@@ -43,8 +43,15 @@ const ratings = $('#contenedor > div.module > div.content.rigth.csearch > div.se
   .get()
   .join('\n');
 
+const dates = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+  .find('.meta > span.year')
+  .map((i, el) => $(el).text().trim())
+  .get()
+  .join('\n');
+
 console.log(titles);
 console.log(ratings);
+console.log(dates);
 
 });
 
