@@ -31,11 +31,11 @@ async function getHTML () {
 getHTML().then((res) => {
 const $ = cheerio.load(res);
   
-const titles = { $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+const titles = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
   .find('.title > a')
   .map((i, el) => $(el).text().trim())
   .get()
-  .join(',') }
+  .join('\n');
 
 const ratings = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
   .find('.meta > span:nth-child(1)')
@@ -43,7 +43,7 @@ const ratings = $('#contenedor > div.module > div.content.rigth.csearch > div.se
   .get()
   .join('\n');
 
-const dates = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
+const years = $('#contenedor > div.module > div.content.rigth.csearch > div.search-page')
   .find('.meta > span.year')
   .map((i, el) => $(el).text().trim())
   .get()
@@ -61,8 +61,11 @@ const urls = $('#contenedor > div.module > div.content.rigth.csearch > div.searc
   .get()
   .join('\n\n');
 
-console.log(titles)
-reply(urls)
+  console.log(titles);
+  console.log(ratings);
+  console.log(years);
+  console.log(imgs);
+  reply(urls);
   
 });
 
