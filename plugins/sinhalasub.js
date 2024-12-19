@@ -122,15 +122,16 @@ if(!downloadUrl) {
 	return reply("*_Can't send your movie in this quality.Please try another quality._*")
 }	    
 
-let caption = `${info.result.data.title} ( ${filteredLinks[number-1].quality} )
-      
-> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
-
-			if(!sendJid) {
+let caption = '> ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ'
 
 const msg2 = {
-            
             externalAdReply: { 
+		    		title: info.result.data.title ,
+				body: filteredLinks[number-1].quality ,
+				mediaType: 1,
+				sourceUrl: array[index-1].link ,
+                		thumbnailUrl: info.result.data.images[0] ,
+				renderLargerThumbnail: false,
           			showAdAttribution: true
 	    		}
           }
@@ -142,25 +143,11 @@ const msg3 = {
 		caption: caption,
 		contextInfo: msg2
             }
+
+			if(!sendJid) {
          await conn.sendMessage(id, msg3)
-				
-
 			} else {
-const msg4 = {
-            
-            externalAdReply: { 
-          			showAdAttribution: true
-	    		}
-          }
-
-const msg5 = {
-		document: {url: downloadUrl },
-		mimetype: "video/mp4",
-		fileName: info.result.data.title + ".mp4",
-		caption: caption,
-		contextInfo: msg4
-            }
-         await conn.sendMessage(sendJid, msg5)
+         await conn.sendMessage(sendJid, msg3)
 			}
 			
 } else {
@@ -185,22 +172,15 @@ let sendInfomsg = `🍟 *${info.result.data.title}*
 
 > ɪɴꜰɪɴɪᴛʏ ᴍᴏᴠɪᴇ ᴡᴏʀʟᴅ`
 
-const msg6 = {
-            externalAdReply: { 
-          			showAdAttribution: true
-	    		}
-          }
-
-const msg7 = {
+const msg4 = {
 		image: {url: info.result.data.images[0]},
-        	caption: sendInfomsg,
-        	contextInfo: msg6
+        	caption: sendInfomsg
             }
 			
 if(!sendJid) {
-await conn.sendMessage(id, msg7)
+await conn.sendMessage(id, msg4)
 			} else {
-await conn.sendMessage(sendJid, msg7)
+await conn.sendMessage(sendJid, msg4)
 			}
 			
 }
