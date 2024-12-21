@@ -22,12 +22,14 @@ const yt = await ytsearch(q)
 if(yt.results.length < 1) return reply("*_Can't find anything._*")
     
 const yts = yt.results[0]
-let ytdl = await ytmp3(yts.url)
 
-if(q.startsWith('https://')) {
-let ytdl = await ytmp3(q)
+let ytdl
+if (!q.startsWith('https://')) {
+   ytdl = await ytmp3(yts.url) 
+} else {
+    ytdl = await ytmp3(q)
 }
-
+		     
 const msg = {
             newsletterJid: "120363352976453510@newsletter",
             newsletterName: "INFINITY WA BOT",
