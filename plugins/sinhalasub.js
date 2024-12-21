@@ -130,7 +130,7 @@ const msg2 = {
 				body: filteredLinks[number-1].quality ,
 				mediaType: 1,
 				sourceUrl: array[index-1].link ,
-                		thumbnailUrl: info.result.data.images[0] ,
+                		thumbnailUrl: info.result.data.image ,
 				renderLargerThumbnail: false,
           			showAdAttribution: true
 	    		}
